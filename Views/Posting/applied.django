@@ -1,0 +1,18 @@
+﻿{% extends "Templates\base.django" %}
+
+{% block title %}
+NoRecruiters :: Contact
+{% endblock %}
+
+{% block content %}
+
+<h2 class="smallHeading">
+    Contact</h2>
+<div class="content" style="padding: 5px;">
+    <div runat="server" id="dvApplied" visible="false" style="text-align: center">
+        <span class="messageStart">Thank you!</span> <span class="messageContents">&nbsp;Your message
+            has been sent. The person you contacted will have your norecruiters profile information.</span>
+    </div>
+</div>
+
+{% endblock %}

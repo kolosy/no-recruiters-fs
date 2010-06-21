@@ -1,0 +1,80 @@
+﻿{% extends "Views\base.django" %} 
+
+{% block title %} 
+NoRecruiters :: Search
+{% endblock %} 
+
+{% block content %}
+<h2 class="smallHeading">
+    Search</h2>
+<div class="content">
+    <table>
+        <tr>
+            <td style="vertical-align: middle; text-align: right; width: 25%; padding-right: 3px;">
+                <span class="tags">popular: 
+                    {% for tag in popularTags %} 
+                    <a href={% url "/postings/{0}/with-tag/{1}" contentType tag.SafeText|urlencode %}">{{tag.TagText}}</a> 
+                    {% if not forloop.last %} ,&nbsp; {% endif %} 
+                    {% endfor %} &nbsp;
+                </span>
+            </td>
+            <td style="vertical-align: middle">
+                <br />
+                &nbsp;
+                <div class="searchBox">
+                    <form name="frmSearch" action="{% url "/postings/{0}" contentType %}" method="get">
+                    <table>
+                        <tr>
+                            <td style="text-align: right; padding-right: 5px;">
+                                Search for:
+                            </td>
+                            <td style="text-align: left;">
+                                <input type="text" name="txtQuery" style="height: 31px; width: 300px" />
+                                <a href='javascript:document.frmSearch.submit()'>
+                                    <img alt="search" src="{% url "/Support/style/btnSearch.jpg" %}" />
+                                </a>
+                                <br />
+                                <div runat="server" id="dvTags" class="tags">
+                                    current: 
+                                    {% for tag in currentTags %} 
+                                        {{tag}} <a href="{% url '/postings/{0}/with-tag/{1}' contentType tag|urlencode %}"> x</a> 
+                                        {% if not forloop.last %} ,&nbsp; {% endif %} 
+                                    {% endfor %}
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    </form>
+                </div>
+                <br />
+                &nbsp;
+            </td>
+        </tr>
+    </table>
+</div>
+<br />
+<h2 class="smallHeading">
+    {% ifequal contentType "resume" %} People {% else %} Jobs {% endifequal %}
+</h2>
+<div class="content">
+    {% for posting in searchResults %}
+    <div class="listItemHeader">
+        <h3>
+            <a href="{% url '/{0}/{1}' contentType posting.shortname %}">{{posting.heading}}</a><span
+                class="flags">( <a href="{% url "/posting/flag/{0}/1/{1}" contentType posting.shortname %}">
+                    recruiter!</a>, <a href="{% url "/posting/flag/{0}/3/{1}" contentType posting.shortname %}">
+                        spam</a>)</span>
+        </h3>
+    </div>
+    <div class="listItem">
+        {% autoescape off %} <span class="contentsExcerpt">{{posting.shorttext}}</span>&nbsp;
+        <a href="{% url '/{0}/{1}' contentType posting.shortname %}">more...</a> 
+        {% endautoescape %}
+    </div>
+    {% empty %}
+    <center>
+    No {% ifequal contentType "resume" %} resumes {% else %} jobs {% endifequal %} matched your search criteria.
+    </center>
+    {% endfor %}
+</div>
+{% endblock %} 

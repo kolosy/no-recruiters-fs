@@ -1,0 +1,38 @@
+﻿{% extends "Templates\base.django" %}
+
+{% block title %}
+NoRecruiters :: Contact
+{% endblock %}
+
+{% block content %}
+
+<h2 class="smallHeading">
+    Contact</h2>
+<div class="content" style="padding: 5px;">
+    {% if currentUser.Posting %}
+    <div>
+        <form action="{{root}}/posting/apply/{{appContentType}}/{{shortName}}" method="post">
+            <span class="messageStart">Would you like to</span> <span class="messageContents">&nbsp;customize
+                your message?</span><br />
+            <br />
+            <textarea name="comment" style='Height:150px; Width:500px' rows="8" cols="185">
+                {% block message %}
+                Dear NoRecruiters user. We are very interested in your resume and would like to speak with you. 
+                Please contact us at your earliest convinience
+                {% endblock %}
+            </textarea>
+            <br />
+            <input type="submit"value=" Go! "> 
+        </form>
+    </div>
+    {% else %}
+    <div style="text-align: center">
+        <span class="messageStart">You should</span> <span class="messageContents">&nbsp;
+            {% block profileMessage %}
+            create a <a href='{{root}}/posting/ad/profile'>profile</a> before you contact someone.
+            {% endblock %}
+        </span>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

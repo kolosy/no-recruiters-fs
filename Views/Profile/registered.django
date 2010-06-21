@@ -1,0 +1,18 @@
+﻿{% extends "Views\base.django" %} 
+
+{% block title %} 
+NoRecruiters :: Registration Complete 
+{% endblock %} 
+
+{% block content %}
+
+<h2 class="smallHeading">
+    Registration</h2>
+<div class="content" style="padding: 5px;">
+    <br />
+        <span class="messageStart">We've got your number.</span> 
+        <span class="messageContents">&nbsp;You have successfully registered</span><br /><br />
+        You can now <a href="{% url '/auth/signin' %}">sign in</a>
+</div>
+
+{% endblock %}

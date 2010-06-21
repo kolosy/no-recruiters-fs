@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>{% block title %} NoRecruiters {% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.5.2/build/reset-fonts-grids/reset-fonts-grids.css" />
+    <link href="{% url '/Support/style/styles.css' %}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="container">
+        <div id="headerOutline">
+            <ul id="mainNav">
+                {% ifequal userType "person" %}
+                <li runat="server" id="liMyResume"><a href='{% url "/posting/resume/preview/byname/{0}" currentUser.posting.shortname|default:"profile" %}'>My Resume</a></li>
+                {% else %}
+                    {% ifequal userType "company" %}
+                    <li runat="server" id="liCompanyProfile"><a href='{% url "/posting/ad/byname/profile" %}'>Company Profile</a></li>
+                    <li runat="server" id="liPost"><a href='{% url "/posting/ad/byname/new" %}'>Post</a></li>
+                    <li runat="server" id="liManage"><a href='{% url "/posting/manage" %}'>Manage</a></li>
+                    {% endifequal %}
+                {% endifequal %}
+                <li runat="server" id="liSearch"><a href='{% url "/default" %}'>Search!</a></li>
+            </ul>
+        </div>
+        <div id="smallNavOutline">
+            <div id="smallNavSpacer">
+                <ul id="smallNav">
+                    <li runat="server" id="liAbout" class="leftEnd"><a href='{% url "/static/about" %}'>ABOUT</a></li>
+                    <li runat="server" id="liHelp"><a href='{% url "/static/help" %}'>HELP</a></li>
+                    {% if BistroUser.Identity.IsAuthenticated %}
+                    <li runat="server" id="liProfile"><a href='{% url "/profile" %}'>PROFILE</a></li>
+                    <li runat="server" id="liLogout"><a href='{% url "/auth/signout" %}'>LOG OUT</a></li>
+                    {% else %}
+                    <li runat="server" id="liSignIn"><a href='{% url "/auth/signin" %}'>SIGN IN</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+        <div id="doc4">
+            <div id="bd">
+                {% block content %}
+                <br />
+                {% endblock %}
+            </div>
+        </div>
+        <div id="footer">
+            <a href='{% url "/static/contact" %}'>Contact Us</a> ::: <a href='{% url "/static/about" %}'>
+                About Us</a> ::: <a href='{% url "/static/bug" %}'>Bug!</a> ::: <a href='{% url "/static/terms" %}'>
+                    Terms and Conditions</a>
+            <br />
+            <br />
+            <span class="copyright">&copy; 2008 no-recruiters.com, Inc. All Rights Reserved<br />
+                powered by <a target="_blank" href="http://bistroframework.org">
+                    the bistro framework</a> and <a target="_blank" href="http://ndjango.org">
+                    ndjango</a><br />
+                <br />
+                <br />
+                <a href="{% url '/default/preferenceReset' %}">not what you're looking for?</a>
+            </span>
+        </div>
+    </div>
+</body>
+</html>

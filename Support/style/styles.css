@@ -1,0 +1,381 @@
+﻿
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* TYPE: Defaults													*/
+/* DESCRIPTION: These are the element defaults, which will			*/
+/* be inherited unless overridend by a more specific selector		*/
+/* because we are using the YUI reset css, the base elements have	*/
+/* no default behavior												*/
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+body
+{
+    font-family: helvetica, arial, sans-serif;	
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* TYPE: Stucture													*/
+/* DESCRIPTION: Structure selectors are used to structure/layout	*/
+/* the page.														*/
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+#container
+{
+	/* outermost element in the page */	
+	background-image:url(bgHeader.jpg);		/* spans entire page for fluid header look */
+	background-repeat:repeat-x;
+}
+#headerOutline
+{
+	/* outermost element for header elements. */
+	width:974px;							/* this is the size of the doc4 yui template */
+	margin-left: auto;						/* this will automatically center the content relative to both sides */
+	margin-right: auto;						/* this will automatically center the content relative to both sides */
+	background-image:url(logoBeta.jpg);	/* NoRecruiter logo */
+	background-repeat:no-repeat;			 
+	background-position:left bottom;		
+	min-height:112px;						/* minimum height so that the entire logo shows */
+	height:112px;
+	position:relative;						/* necessary for child navigation elements, that are positioned absolute */
+}
+#bd
+{
+	/* this appends a small padding for the content body */
+	padding:20px 0px 20px 0px;	
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* TYPE: Navigation													*/
+/* DESCRIPTION: Defines the menu layouts on the page				*/
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+#mainNav
+{
+	/* the main container for the main navigation tabs */
+	position:absolute;						/* will position this element absolutely in side of it's parent (#headerOutline) tag */
+	left: 300px;							/* will position 220px from the right border of the parent */
+	bottom:0px;								/* will position 0px from the very bottom of the parent */
+}
+#mainNav li
+{
+	/* the style applied to the individual menu items (as list tags (li)) */
+    float:left;								/* this will allow block elements to behave as inline */
+    background-image:url(bgTab.jpg);		/* the background for the tabs.  bgTab has a slight green 1px gradient */
+    background-repeat:repeat-x;
+    padding: 6px 6px 6px 6px;				
+    font-size:138.5%;						/* per YUI guidelines, use percentages for font sizes, 138.5% corresponds to 18px */
+    font-weight:bold;						
+    border-left: 1px solid #82A54D;			/* for the dropshadow effect */
+    border-right: 1px solid #638632;		/* for the dropshadow effect */
+    border-top: 1px solid #C0E77C;			/* for the dropshadow effect */
+}
+#mainNav li a
+{
+	/* the hyperlink style for elements not hovered */
+	color: #40392F; 
+	text-decoration:none; 
+}
+#mainNav li a:hover
+{
+	/* hyperlink hover style */
+	color: #5D5D5D; 
+}
+#smallNavOutline
+{
+	/* outermost element for header elements. */
+	width:100%;							/* this is the size of the doc4 yui template */
+	min-height:20px;						/* minimum height so that the entire logo shows */
+	position:relative;						/* necessary for child navigation elements, that are positioned absolute */
+	background-color: #2b332e;
+}
+#smallNav
+{
+	/* smallNav styles are identical to the mainNav styles, with a couple small differences (no dropshadow, no background image) */
+	position:relative;
+	top:3px;
+	right: 0;
+}
+#smallNav li
+{
+	float:left;
+	padding: 0 5px;
+	font-size: 93%;		/* per YUI guidelines, this corresponds to 12px */
+	border-left: 1px solid #E2E2E2;
+}
+#smallNav li a
+{
+	color: #E1D855; 
+	text-decoration:none; 
+	font-weight: bold;
+}
+#smallNav .leftEnd
+{
+	border-left:none; /* overrides the default border-left attriute on #smallNav li */
+}
+#smallNavSpacer
+{
+	width:974px;							/* this is the size of the doc4 yui template */
+	margin-left: auto;						/* this will automatically center the content relative to both sides */
+	margin-right: auto;						/* this will automatically center the content relative to both sides */
+}
+
+#joinButton
+{
+	/* join button positioned absoutely inside of its parent element #headerOutline */ 
+	position:absolute; 
+	top:26px; 
+	right:10px;
+}
+.viewPostingHeader 
+{
+	position:relative;						/* necessary for child navigation elements, that are positioned absolute */
+	height: 50px;
+}
+#applyButton
+{
+	/* join button positioned absoutely inside of its parent element #headerOutline */ 
+	position:absolute; 
+	top:5px; 
+	right:5px;
+}
+
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* TYPE: Custom Styles												*/
+/* DESCRIPTION: Define custom styles that are used throughout the 	*/
+/* site.															*/
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+h2.smallHeading
+{
+    font-size: 123.1%;
+    font-weight: bold;
+    letter-spacing: -0.366667px;
+    line-height: 1.6em;	
+	padding: .0em .4em .0em .4em;
+	color: #40392F;	
+	background-image:url(bgContent.jpg);
+	border: solid 1px #e4e4e4;
+}
+.smallHeadingSubtitle 
+{
+	color: #808c85;
+	font-weight: normal;
+}
+div.content
+{
+	font-size: 93%;
+    line-height: 1.38em;
+    letter-spacing: 0.03em;
+    color:#444444;
+    padding: .0em .4em .0em .4em;
+    background-color:#f5f5f5; 	
+    border-left: 1px solid #e4e4e4;
+    border-right: 1px solid #e4e4e4;
+    border-bottom: 1px solid #e4e4e4;
+}
+#footer
+{
+	background-color:#ffffff; 
+	height:9em; 
+	border-top: solid .3em #666663; 
+	text-align:center;
+}
+.copyright
+{
+	color:#666666; 
+	font-size:small;	
+}
+h3
+{
+    font-size: 108%;
+    font-weight: bold;
+    letter-spacing: -0.366667px;
+    line-height: 1.6em;	
+	color: #40392F;	
+}
+h3.padded
+{
+	padding: .2em .0em .0em .0em;
+}
+a
+{
+	/* the hyperlink style for elements not hovered */
+	color: #2D7BB2; 
+	outline: none;
+	font-weight: bold;
+	text-decoration: none;
+}
+a:hover
+{
+	/* hyperlink hover style */
+	color: #5D5D5D; 
+}
+
+.searchBox
+{
+	font-size: 153.9%;
+	font-weight:bold;	
+}
+
+.searchBox input 
+{
+	color: #a8b2ac;
+	border: 1px solid #c0ccc4;
+}
+
+#searchButton,
+.searchBox img 
+{
+	position: absolute;
+	top: 211px;
+}
+#searchButton,
+.searchBox img 
+{
+	#top: 212px; /* ie hack */
+}
+
+
+.tags
+{
+	color: #808c85;
+	font-size: 12px;
+	font-weight:normal;
+}
+.tags a
+{
+	font-weight: normal;
+}
+.contentsExcerpt 
+{
+	font-family: Georgia, "Times New Roman", serif;
+}
+.listItemHeader 
+{
+	overflow: hidden; 
+	margin: 0 0 0.5em; 
+	background: url(line_header.gif) 0 0.875em repeat-x;
+}
+.listItemHeader h3 
+{
+	font-size: 16px;
+	float: left; 
+	padding-right: 8px; 
+	margin-bottom: 0; 
+	background: #f5f5f5;
+	color: #808c85;
+}
+.listItem 
+{
+	padding-bottom: 15px;
+}
+.messageStart 
+{
+	font-size: 18px;
+	font-weight: bold;
+	color: #2b332e;
+}
+.messageContents 
+{
+	font-size: 18px;
+	font-weight: normal;
+	color: #808c85;
+}
+.flags
+{
+	font-size: 11px;
+}
+.flags a 
+{
+	color: #cc3300;
+}
+.standardList ul 
+{
+	margin: 1em;
+	margin-left: 2em;
+}
+.standardList ul li 
+{
+	list-style: disc outside;
+}
+
+div.error
+{
+    line-height: 1.38em;
+    letter-spacing: 0.03em;
+    color:#FF4444;
+    padding: .0em .4em .0em .4em;
+    background-color:#f5f5f5; 	
+    border: 1px dashed red;
+}
+
+div.info
+{
+    line-height: 1.38em;
+    letter-spacing: 0.03em;
+    color:#448844;
+    padding: .0em .4em .0em .4em;
+    background-color:#f5f5f5; 	
+    border: 1px dashed red;
+}
+
+.contentGrid 
+{
+	width: 100%;
+}
+
+.sectionHeader th
+{
+	font-weight: bold
+}
+
+.actionColumn
+{
+	width: 200px
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+Copyright (c) 2008, Yahoo! Inc. All rights reserved.
+Code licensed under the BSD License:
+http://developer.yahoo.net/yui/license.txt
+version: 2.5.2
+*/
+
+/*
+This is what's used inside of the user content areas. 
+content comes accross with standard html formatting, 
+so we need to re-enable it
+*/
+.standardContent h1{font-size:138.5%;}
+.standardContent h2{font-size:123.1%;}
+.standardContent h3{font-size:108%;}
+.standardContent h1,.standardContent h2,.standardContent h3{margin:1em 0;}
+.standardContent h1,.standardContent h2,.standardContent h3,.standardContent h4,.standardContent h5,.standardContent h6,.standardContent strong{font-weight:bold;}
+.standardContent abbr,.standardContent acronym{border-bottom:1px dotted #000;cursor:help;}
+.standardContent em{font-style:italic;}
+.standardContent blockquote,.standardContent ul,.standardContent ol,.standardContent dl{margin:1em;}
+.standardContent ol,.standardContent ul,.standardContent dl{margin-left:2em;}
+.standardContent ol li{list-style:decimal outside;}
+.standardContent ul li{list-style:disc outside;}
+.standardContent dl dd{margin-left:1em;}
+.standardContent th,.standardContent td{padding:.5em;}
+.standardContent th{font-weight:bold;text-align:center;}
+.standardContent caption{margin-bottom:.5em;text-align:center;}
+.standardContent p,.standardContent fieldset,.standardContent table,.standardContent pre{margin-bottom:1em;}
+.standardContent input[type=text],.standardContent input[type=password],.standardContent textarea{width:12.25em;*width:11.9em;}

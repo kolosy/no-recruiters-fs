@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{dc7f0ec9-236f-4a5e-9157-b1963a22a296}</ProjectGuid>
+    <ProjectTypeGuids>{94887830-9110-3f61-84ae-beea7891c7e6};{5B89FCC2-C9F6-49a8-8F8D-EDDCC3FDC9E9};{349c5851-65df-11da-9384-00065b846f21};{f2a71f9b-5d33-465a-a702-920d77279786}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>BistroApp1</RootNamespace>
+    <AssemblyName>NoRecruiters</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <Name>BistroApp1</Name>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <Tailcalls>false</Tailcalls>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <WarningLevel>3</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <Tailcalls>true</Tailcalls>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <WarningLevel>3</WarningLevel>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\FSharp\1.0\Microsoft.FSharp.Targets" Condition="!Exists('$(MSBuildBinPath)\Microsoft.Build.Tasks.v4.0.dll')" />
+  <Import Project="$(MSBuildExtensionsPath32)\..\Microsoft F#\v4.0\Microsoft.FSharp.Targets" Condition=" Exists('$(MSBuildBinPath)\Microsoft.Build.Tasks.v4.0.dll')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+      Other similar extension points exist, see Microsoft.Common.targets.
+ <Target Name="BeforeBuild">
+ </Target>
+ <Target Name="AfterBuild">
+ </Target>
+ -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties Guid="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>1568</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties Guid="{349c5851-65df-11da-9384-00065b846f21}" User="">
+        <WebProjectProperties>
+          <StartPageUrl>Default.htm</StartPageUrl>
+          <StartAction>SpecificPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>True</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <ItemGroup>
+    <Compile Include="Controllers\Util.fs" />
+    <Compile Include="Controllers\Enums.fs" />
+    <Compile Include="Controllers\Data.fs" />
+    <Compile Include="Controllers\Security.fs" />
+    <Compile Include="Controllers\Home.fs" />
+    <Compile Include="Controllers\Filters.fs" />
+    <Compile Include="Controllers\Aspects.fs" />
+    <Compile Include="Controllers\Auth.fs" />
+    <Compile Include="Controllers\Postings.fs" />
+    <Content Include="Web.config" />
+    <Content Include="Default.htm" />
+    <None Include="Views\base.django" />
+    <None Include="Views\Components\tinymce.html" />
+    <None Include="Views\home.django" />
+    <None Include="Views\Posting\Ad\edit.django" />
+    <None Include="Views\Posting\applied.django" />
+    <None Include="Views\Posting\apply.django" />
+    <None Include="Views\Posting\edit.django" />
+    <None Include="Views\Posting\flag.django" />
+    <None Include="Views\Posting\search.django" />
+    <None Include="Views\Posting\view.django" />
+    <None Include="Views\Profile\register.django" />
+    <None Include="Views\Profile\registered.django" />
+    <None Include="Views\Profile\signin.django" />
+    <None Include="Views\Profile\signout.django" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Bistro.Core">
+      <HintPath>lib\Bistro.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Bistro.Extensions">
+      <HintPath>lib\Bistro.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Bistro.FSharpExtensions">
+      <HintPath>lib\Bistro.FSharpExtensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Divan">
+      <HintPath>lib\Divan.dll</HintPath>
+    </Reference>
+    <Reference Include="FunctionalDivan">
+      <HintPath>lib\FunctionalDivan.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="FSharp.Core" />
+    <Reference Include="NDjango.BistroIntegration">
+      <HintPath>lib\NDjango.BistroIntegration2010.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NDjango.Core">
+      <HintPath>lib\NDjango.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NDjango.Filters">
+      <HintPath>lib\NDjangoFilters.NDjangoExtension.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>lib\StructureMap.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web" />
+  </ItemGroup>
+</Project>

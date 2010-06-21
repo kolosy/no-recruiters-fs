@@ -1,0 +1,18 @@
+﻿{% extends "Views\base.django" %} 
+
+{% block title %} 
+NoRecruiters :: Signed off
+{% endblock %} 
+
+{% block content %}
+
+<h2 class="smallHeading">
+    Authorization</h2>
+<div class="content" style="padding: 5px;">
+    <br />
+        <span class="messageStart">Buh-bye!</span> 
+        <span class="messageContents">&nbsp;You have successfully signed out</span><br /><br />
+        Want to <a href="{% url '/auth/signin' %}">sign back in?</a>
+</div>
+
+{% endblock %}

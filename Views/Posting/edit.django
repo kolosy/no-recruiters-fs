@@ -1,0 +1,55 @@
+﻿{% extends "Views\base.django" %}
+
+{% block title %}
+NoRecruiters :: Edit Posting
+{% endblock %}
+
+{% block content %}
+
+{% include "Views\Components\tinymce.html" %}
+<h2 class="smallHeading">
+    {% block heading %}New Posting{%endblock%}</h2>
+<div class="content" style="padding: 5px; padding-top: 15px;">
+    <form action="{% block submitUrl %}{%endblock%}" method="post" name="frmPosting">
+    <table style="text-align: left; width: 965px;margin-left: auto; margin-right: auto">
+        <tr>
+            <td colspan="2" style="border-bottom: dotted 1px gray">
+            {% block postingIntro %}
+            {% endblock%}
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 55px;">
+                Brief title</td>
+            <td>
+                <input name="heading" value="{{posting.Heading}}" size="50" /></td>
+        </tr>
+        <tr style="padding-top: 3px;">
+            <td style="width: 55px; vertical-align: top" nowrap>
+                Tags<br /></td>
+            <td style="vertical-align: top">
+                <input name="tags" size="50" value="{{ posting.TagsAsString }}" />(comma-separated)</td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: right; height: 5px">
+                &nbsp;</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                Detailed {% block postingType %}{%endblock%}</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+				<textarea id="detail" name="detail" rows="15" cols="30">{{posting.contents}}</textarea>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: right; padding-top: 5px;">
+                <input type="submit" name="cmdOk" value="Submit" />&nbsp;
+                <input type="button" name="cmdCancel" value="Cancel" onclick='window.location="{%block cancelMethod%}{%endblock%}"'>
+            </td>
+        </tr>
+    </table>
+    </form>
+</div>
+{% endblock %}

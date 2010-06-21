@@ -1,0 +1,55 @@
+﻿{% extends "Views\base.django" %}
+
+{% block title %}
+NoRecruiters :: Sign In
+{% endblock %}
+
+{% block content %}
+
+<div class="yui-gb">
+    <div class="yui-u first" >&nbsp;</div>
+    <div class="yui-u">
+
+        <h2 class="smallHeading">
+            Login or <a href="{% url '/auth/register' %}">register</a></h2>            
+        <div class="content" style="padding-bottom: 5px; ">
+            {% if errors %}
+            <div class="error">
+                Login was unsuccessful. Please correct the errors and try again.
+                <ul>
+                {% for message in errors.Values %}
+                    <li>{{message}}</li>
+                {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+
+            <br />
+            <form action="{% url '/auth/signin' %}" method="post">
+            <table style="padding: 5px; text-align: left; margin-left: auto; margin-right: auto" >
+                <tr>
+                    <td>
+                        Login</td>
+                    <td>
+                        <input type="text" name="username" width="150px" value="{{username}}" /></td>
+                </tr>
+                <tr>
+                    <td style="padding-right: 3px;">
+                        Password</td>
+                    <td>
+                        <input type="password" name="password" width="150px"  /></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: right">
+                        <input type="submit" name="cmdOk" value="Sign in" />
+                    </td>
+                </tr>
+                <input type="hidden" name="originalRequest" value="{{originalRequest}}" />
+            </table>
+            </form>
+        </div>
+    </div>
+    <div class="yui-u" >&nbsp;</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "Views\base.django" %}
+
+{% block title %}
+NoRecruiters :: {{posting.heading}}
+{% endblock %}
+
+{% block content %}
+
+<h2 class="smallHeading">
+    <span class="messageStart">{{ posting.heading }}</span>
+        <span class="messageContents">
+        {% for tag in posting.tags %}
+            {% if forloop.first %}({% endif %}<a href="{% url '/postings/{0}/with-tag/{1}' posting.contentyype tag.safetext|urlencode %}">{{tag.tagtext}}</a>{% if not forloop.last %},&nbsp;{% else %}){% endif %}
+        {% endfor %}
+        </span>
+    </h2>
+<div class="content">
+    {% ifnotequal posting.User BistroUser %}
+    <div class="viewPostingHeader" >
+        <a href="{% url '/posting/apply/{0}/{1}' contentType posting.shortname %}">
+            {% ifequal contentType "resume" %}
+            <img alt="apply" id="applyButton" src="{% url '/Support/style/btnContact.jpg' %}" />
+            {% else %}
+            <img alt="apply" id="applyButton" src="{% url '/Support/style/btnApply2.jpg' %}" />
+            {% endifequal %}
+        </a>
+    </div>
+    {% endifnotequal %}
+    <div class="standardContent" >
+    {% autoescape off %}
+        {{ posting.contents }}
+    {% endautoescape %}
+    </div>
+</div>
+
+{% endblock %}

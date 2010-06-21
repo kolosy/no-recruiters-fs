@@ -1,0 +1,81 @@
+﻿{% extends "Views\base.django" %}
+
+{% block title %}
+NoRecruiters :: Register
+{% endblock %}
+
+{% block content %}
+
+<div class="yui-gb">
+    <div class="yui-u first"> &nbsp;</div>
+    <div class="yui-u">
+        <h2 class="smallHeading">
+            Register
+        </h2>
+        <div class="content" style="padding: 5px;">
+
+            {% if errors %}
+            <div class="error">
+                Login was unsuccessful. Please correct the errors and try again.
+                <ul>
+                {% for message in errors.Values %}
+                    <li>{{message}}</li>
+                {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+
+            <form action="{% url '/auth/register' %}" method="post">
+            <table style="padding-left: 3px; text-align: left; margin-left: auto; margin-right: auto">
+                <tr>
+                    <td>
+                        Login</td>
+                    <td>
+                        <input value="{{username}}" name="username" Width="150px" /></td>
+                </tr>
+                <tr>
+                    <td>
+                        Password</td>
+                    <td>
+                        <input type="password" name="password" Width="150px" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="height: 5px">
+                        &nbsp;</td>
+                </tr>
+                <tr>
+                    <td>
+                        Email</td>
+                    <td>
+                        <input value="{{email}}" name="email" Width="150px" /></td>
+                </tr>
+                <tr>
+                    <td>
+                        First Name</td>
+                    <td>
+                        <input value="{{firstName}}" name="firstName" Width="150px" /></td>
+                </tr>
+                <tr>
+                    <td>
+                        Last Name</td>
+                    <td>
+                        <input value="{{lastName}}" name="lastName" Width="150px" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="height: 5px">
+                        &nbsp;</td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: right">
+                        <input type="submit" name="ok" value="Register" />&nbsp;
+                        <input type="button" value="Cancel" onclick="window.location='{% url "/default" %}" />&nbsp;
+                </tr>
+            </table>
+            </form>
+        </div>
+    </div>
+    <div class="yui-u">
+        &nbsp;</div>
+</div>
+
+{% endblock %}

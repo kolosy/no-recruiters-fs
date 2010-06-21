@@ -1,0 +1,17 @@
+﻿{% extends "Templates\base.django" %}
+
+{% block title %}
+NoRecruiters :: Flag
+{% endblock %}
+
+{% block content %}
+
+<h2 class="smallHeading">
+    Flag a post</h2>
+<div class="content" style="padding: 5px;">
+    <br />
+        <span class="messageStart">Thanks.</span> <span class="messageContents">&nbsp;We've got their license plate. We'll go pay them a visit.</span><br /><br />
+        Clicked by accident? No worries. We review these before acting on them.
+</div>
+
+{% endblock %}

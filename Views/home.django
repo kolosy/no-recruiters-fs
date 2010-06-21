@@ -1,0 +1,31 @@
+﻿{% extends "Views\base.django" %}
+
+{% block title %}
+Welcome to NoRecruiters!
+{% endblock %}
+
+{% block content %}
+
+    <div class="yui-gb">
+        <div class="yui-u first">
+            &nbsp;</div>
+        <div class="yui-u">
+            <h2 class="smallHeading">
+                Welcome to NoRecruiters.
+            </h2>
+            <div class="content" style="text-align: center">
+                <br />
+                <h3>
+                    Are you looking for <a href="{% url '/postings/resume?firstTime=true' %}">
+                        people</a> or <a href="{% url '/postings/ad?firstTime=true' %}">
+                            jobs</a>
+                </h3>
+                <br />
+                &nbsp;
+            </div>
+        </div>
+        <div class="yui-u">
+            &nbsp;</div>
+    </div>
+
+{% endblock %}
