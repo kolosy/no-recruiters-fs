@@ -26,7 +26,7 @@ namespace NoRecruiters.Controllers
         [<Bind("get /postings/{contentType}?{firstTime}"); ReflectedDefinition>]
         let firstTimeSearchC contentType firstTime defaultContentType = 
             let newContentType = if firstTime then contentType else defaultContentType
-            HttpContext.Current.Response.Cookies.Add(new HttpCookie("nrDefaultContentType", defaultContentType))
+            HttpContext.Current.Response.Cookies.Add(new HttpCookie("nrDefaultContentType", newContentType))
             newContentType |> named "defaultContentType"
         
         [<Bind("get /postings/{contentType}?{firstTime}&{txtQuery}")>]

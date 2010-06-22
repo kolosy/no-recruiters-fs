@@ -123,18 +123,24 @@ module Data =
     module Postings =
         open Entities
 
-        let search text tags contentType =
-            let t = 
-                match tags with 
-                | Some t when (List.length t) > 0 -> 
-                    sprintf "text:\"%s\" or title:\"%s\" and (tag:%s)" text text 
-                        (System.String.Join(" or tag:", Array.ofList (List.map (fun (e: Entities.tag) -> e.safeText)  t)))
-                | _ -> sprintf "text:\"%s\" or title:\"%s\"" text text 
-                
-            Fti.selectRecords<Entities.posting> (
-                Fti.query "items" "all" database |>
-                Fti.q t
+        let search text (tags: tag list option) (contentType: Enums.Content.ContentType) =
+            if String.IsNullOrWhiteSpace(text) && tags.IsNone then
+                selectRecords<Entities.posting> (
+                    query "items" "byType" database
+                    |> byKey contentType
                 )
+            else
+                let t = 
+                    match tags with 
+                    | Some t when (List.length t) > 0 -> 
+                        sprintf "text:\"%s*\" or title:\"%s*\" and (tag:%s)" text text
+                            (System.String.Join(" or tag:", Array.ofList (List.map (fun (e: Entities.tag) -> e.safeText)  t)))
+                    | _ -> sprintf "text:\"%s*\" or title:\"%s*\"" text text 
+                
+                Fti.selectRecords<Entities.posting> (
+                    Fti.query "items" "all" database |>
+                    Fti.q t
+                    )
                 
         let byId id = 
             id |> from<Entities.posting> database

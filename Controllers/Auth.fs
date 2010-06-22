@@ -34,14 +34,19 @@ namespace NoRecruiters.Controllers
             password: string
         }
 
+        let validateSignIn data errors = 
+            let rules = 
+                [(System.String.IsNullOrWhiteSpace(data.username), "username", "Please provide a username");
+                 (System.String.IsNullOrWhiteSpace(data.password), "password", "Please provide a password")]
+
+            validate errors false rules
+            
         [<Bind("post /auth/signin"); 
           RenderWith(@"Views\Profile\signin.django"); ReflectedDefinition>]
         let signInC (ctx: ictx) (data: signInForm) (errors: Map<string, string> option) = 
             let updatedErrors = 
-                match normalize data.username, normalize data.password with 
-                | "","" -> Some <| reportError errors "username" "Please provide a username and a password"
-                | "", _ -> Some <| reportError errors "username" "Please provide a username"
-                | _ -> 
+                match validateSignIn data errors with
+                | None ->  
                     match Users.byCredentials data.username data.password with
                     | Some user ->
                         ctx.Authenticate <| Security.UserProfile(user)
@@ -51,6 +56,7 @@ namespace NoRecruiters.Controllers
                         errors
                     | None -> 
                         Some <| reportError errors "" "The user name or password is incorrect"
+                | _ as newErrors -> newErrors
 
             data.username |> named "username",
             updatedErrors |> named "errors"
@@ -67,15 +73,12 @@ namespace NoRecruiters.Controllers
             lastName: string
             password: string
         }
-        
             
-
         let validateProfile (profile: profileForm) (errors: Map<string, string> option) =
-            let rules = [
-                            (System.String.IsNullOrWhiteSpace (profile.username), "username", "Please provide a username");
-                            (System.String.IsNullOrWhiteSpace (profile.password), "password", "Please provide a password");
-                            ((Users.byName profile.username).IsSome, "username", "A user with the same name already exists. Please choose another name");
-                        ]
+            let rules = 
+                [(System.String.IsNullOrWhiteSpace (profile.username), "username", "Please provide a username");
+                 (System.String.IsNullOrWhiteSpace (profile.password), "password", "Please provide a password");
+                 ((Users.byName profile.username).IsSome, "username", "A user with the same name already exists. Please choose another name")]
 
             validate errors false rules
 
