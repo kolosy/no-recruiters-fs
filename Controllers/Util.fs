@@ -63,8 +63,8 @@
                 Map.add errorCode errorText Map.empty
 
         let rec validate errors stopOnFail = function
-        | (pass,field,message)::t -> 
-            if not pass then
+        | (fail,field,message)::t -> 
+            if fail then
                 let newErrors = Some (reportError errors field message)
                 if stopOnFail then newErrors
                 else validate newErrors stopOnFail t

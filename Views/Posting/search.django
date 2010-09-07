@@ -13,7 +13,7 @@ NoRecruiters :: Search
             <td style="vertical-align: middle; text-align: right; width: 25%; padding-right: 3px;">
                 <span class="tags">popular: 
                     {% for tag in popularTags %} 
-                    <a href={% url "/postings/{0}/with-tag/{1}" contentType tag.SafeText|urlencode %}">{{tag.TagText}}</a> 
+                    <a href={% url "/postings/{0}/with-tag/{1}" contentType tag.safeText|urlencode %}">{{tag.TagText}}</a> 
                     {% if not forloop.last %} ,&nbsp; {% endif %} 
                     {% endfor %} &nbsp;
                 </span>
@@ -37,7 +37,7 @@ NoRecruiters :: Search
                                 <div runat="server" id="dvTags" class="tags">
                                     current: 
                                     {% for tag in currentTags %} 
-                                        {{tag}} <a href="{% url '/postings/{0}/with-tag/{1}' contentType tag|urlencode %}"> x</a> 
+                                        {{tag.safeText}} <a href="{% url '/postings/{0}/without-tag/{1}' contentType tag.safeText|urlencode %}"> x</a> 
                                         {% if not forloop.last %} ,&nbsp; {% endif %} 
                                     {% endfor %}
                                 </div>

@@ -22,13 +22,13 @@ NoRecruiters :: Edit Posting
             <td style="width: 55px;">
                 Brief title</td>
             <td>
-                <input name="heading" value="{{posting.Heading}}" size="50" /></td>
+                <input name="heading" value="{{posting.heading}}" size="50" /></td>
         </tr>
         <tr style="padding-top: 3px;">
             <td style="width: 55px; vertical-align: top" nowrap>
                 Tags<br /></td>
             <td style="vertical-align: top">
-                <input name="tags" size="50" value="{{ posting.TagsAsString }}" />(comma-separated)</td>
+                <input name="tags" size="50" value="{{ tags|join:", " }}" />(comma-separated)</td>
         </tr>
         <tr>
             <td colspan="2" style="text-align: right; height: 5px">

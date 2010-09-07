@@ -94,6 +94,7 @@
     <None Include="Views\Components\tinymce.html" />
     <None Include="Views\home.django" />
     <None Include="Views\Posting\Ad\edit.django" />
+    <None Include="Views\Posting\Ad\Manage\myAds.django" />
     <None Include="Views\Posting\applied.django" />
     <None Include="Views\Posting\apply.django" />
     <None Include="Views\Posting\edit.django" />

@@ -10,12 +10,12 @@ NoRecruiters :: {{posting.heading}}
     <span class="messageStart">{{ posting.heading }}</span>
         <span class="messageContents">
         {% for tag in posting.tags %}
-            {% if forloop.first %}({% endif %}<a href="{% url '/postings/{0}/with-tag/{1}' posting.contentyype tag.safetext|urlencode %}">{{tag.tagtext}}</a>{% if not forloop.last %},&nbsp;{% else %}){% endif %}
+            {% if forloop.first %}({% endif %}<a href="{% url '/postings/{0}/with-tag/{1}' posting.contentType|lower tag.safeText|urlencode %}">{{tag.tagText}}</a>{% if not forloop.last %},&nbsp;{% else %}){% endif %}
         {% endfor %}
         </span>
     </h2>
 <div class="content">
-    {% ifnotequal posting.User BistroUser %}
+    {% ifnotequal posting.User currentUser %}
     <div class="viewPostingHeader" >
         <a href="{% url '/posting/apply/{0}/{1}' contentType posting.shortname %}">
             {% ifequal contentType "resume" %}

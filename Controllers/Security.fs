@@ -60,22 +60,27 @@ namespace NoRecruiters.Controllers
         [<Deny("?", OnFailure = FailAction.Redirect, Target = "/auth/signin"); SecurityController; ReflectedDefinition>]
         let generalFunctionAccessC (ctx: ictx) =  
             (if (ctx.CurrentUser.Identity.IsAuthenticated) then (ctx.CurrentUser :?> UserProfile).Data
-             else None) |> named "currentUser"
-
-        [<Bind("get ?/byname/{shortName}")>]
+             else None) 
+             |> SessionValue
+             |> named "currentUser"
+//
+        [<Bind("?/byname/{shortName}")>]
         [<Bind("?/byId/{postingId}"); ReflectedDefinition>]
         let dataAccessC shortName postingId (currentUser: Entities.user option) =
             match 
                (match currentUser with
                 | None -> None
                 | Some user ->
-                    match normalize shortName, normalize postingId with
-                    | "profile",_ -> 
-                        match Postings.byId user.postingId with
-                        | Some posting -> Some posting
-                        | None -> Some <| Postings.empty()
-                    | "new",_ | "", "" -> Some <| Postings.empty()
-                    | "", _ -> Postings.byId postingId
+                    match normalize shortName with
+                    | "profile" -> 
+                        if not <| System.String.IsNullOrWhiteSpace user.postingId then
+                            match Postings.byId user.postingId with
+                            | Some posting -> Some posting
+                            | None -> Some <| Postings.empty()
+                        else
+                            Some <| Postings.empty()
+                    | "new" | "" when System.String.IsNullOrWhiteSpace postingId -> Some <| Postings.empty()
+                    | "" -> Postings.byId postingId
                     | _ -> Postings.byShortName shortName) with
             | Some posting when not (posting.userId = currentUser.Value.id) && not (shortName = "new" || shortName = "profile")->
                 raise (WebException(StatusCode.Forbidden, "unauthorized access"))

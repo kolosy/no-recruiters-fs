@@ -41,10 +41,17 @@ namespace NoRecruiters.Controllers
 
             validate errors false rules
             
+        [<Bind("get /auth/signout"); ReflectedDefinition>]
+        let signoutC (ctx: ictx) =
+            ctx.Authenticate(null)
+            ctx.Transfer("/")
+            let (currentUser: Entities.user option session) = SessionValue None
+            currentUser
+
         [<Bind("post /auth/signin"); 
           RenderWith(@"Views\Profile\signin.django"); ReflectedDefinition>]
-        let signInC (ctx: ictx) (data: signInForm) (errors: Map<string, string> option) = 
-            let updatedErrors = 
+        let signInC (ctx: ictx) (username: string form) (data: signInForm) (errors: Map<string, string> option) = 
+            let updatedErrors, currentUser = 
                 match validateSignIn data errors with
                 | None ->  
                     match Users.byCredentials data.username data.password with
@@ -53,11 +60,12 @@ namespace NoRecruiters.Controllers
                         match normalize data.originalRequest with
                         | "" -> ctx.Transfer "/default"
                         | _ -> ctx.Transfer (System.Web.HttpUtility.UrlDecode(data.originalRequest))
-                        errors
+                        errors, Some user
                     | None -> 
-                        Some <| reportError errors "" "The user name or password is incorrect"
-                | _ as newErrors -> newErrors
+                        Some <| reportError errors "" "The user name or password is incorrect", None
+                | _ as newErrors -> newErrors, None
 
+            SessionValue (currentUser) |> named "currentUser",
             data.username |> named "username",
             updatedErrors |> named "errors"
 
@@ -78,7 +86,7 @@ namespace NoRecruiters.Controllers
             let rules = 
                 [(System.String.IsNullOrWhiteSpace (profile.username), "username", "Please provide a username");
                  (System.String.IsNullOrWhiteSpace (profile.password), "password", "Please provide a password");
-                 ((Users.byName profile.username).IsSome, "username", "A user with the same name already exists. Please choose another name")]
+                 ((Users.byName profile.username).IsNone, "username", "A user with the same name already exists. Please choose another name")]
 
             validate errors false rules
 

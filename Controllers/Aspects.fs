@@ -26,12 +26,12 @@ namespace NoRecruiters.Controllers
         let tagC tagList currentTags = 
             let tags = match currentTags with | Some t -> t | None -> []
             (if System.String.IsNullOrEmpty(tagList) then tags 
-             else (List.ofArray <| tagList.Split(',')) :: tags) |>
-            named "currentTags"
+             else (Tags.parseAndDedupe tagList) @ tags)
+            |> named "currentTags"
 
         [<Bind("get ?/without-tag/{tag}"); ReflectedDefinition>]
-        let untagC tag currentTags = 
+        let untagC tag (currentTags: Entities.tag list option) = 
             let tags = match currentTags with | Some t -> t | None -> []
             (if System.String.IsNullOrEmpty(tag) then tags 
-             else List.filter (fun t -> not (t = tag)) tags) |>
-            named "currentTags"
+             else List.filter (fun t -> not (t.safeText = tag)) tags) 
+            |> named "currentTags"

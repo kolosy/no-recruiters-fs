@@ -54,7 +54,10 @@ namespace NoRecruiters.Controllers
         module Ad = 
             [<Bind("get /posting/ad/byname/{shortName}")>]
             [<RenderWith("Views/Posting/Ad/edit.django"); ReflectedDefinition>]
-            let displayC (ctx: ictx) = ()
+            let displayC (posting: Entities.posting option) = 
+                (match posting with 
+                 | Some p -> List.map (fun (e: Entities.tag) -> e.tagText) p.tags
+                 | None -> []) |> named "tags"
 
             [<FormData(false)>]
             type adForm = {
@@ -66,16 +69,25 @@ namespace NoRecruiters.Controllers
 
             [<Bind("post /posting/ad/byname/{shortName}")>]
             [<RenderWith("Views/Posting/Ad/edit.django"); ReflectedDefinition>]
-            let updateC (data: adForm) (shortName: string) (posting: Entities.posting option) (currentUser: Entities.user) = 
-                (match normalize data.published with 
-                 | "" -> Postings.save { (match posting with | Some p -> p | None -> Postings.empty()) with 
-                                            userId = currentUser.id
-                                            heading = data.heading
-                                            shortname = Postings.makeShortName data.heading
-                                            shorttext = Postings.makeShortText data.detail
-                                            updatedOn = System.DateTime.Now
-                                            contents = data.detail 
-                                            tags = Tags.parseAndDedupe data.tags}
-                 | _ -> Postings.save { (match posting with | Some p -> p | None -> failwith "Can't publish an empty posting") with 
-                                            published = (data.published.ToLower() = "true") })
-                 |> named "posting"
+            let updateC (context: ictx) (data: adForm) (shortName: string) (posting: Entities.posting option) (currentUser: Entities.user) = 
+                let posting = 
+                    match normalize data.published with 
+                    | "" -> Postings.save { (match posting with | Some p -> p | None -> Postings.empty()) with 
+                                             userId = currentUser.id
+                                             heading = data.heading
+                                             shortname = Postings.makeShortName data.heading
+                                             shorttext = Postings.makeShortText data.detail
+                                             updatedOn = System.DateTime.Now
+                                             contents = data.detail 
+                                             tags = Tags.parseAndDedupe data.tags}
+                    | _ -> Postings.save { (match posting with | Some p -> p | None -> failwith "Can't publish an empty posting") with 
+                                            published = (data.published.ToLower() = "true") }
+
+                context.Transfer("/posting/manage")
+
+            [<Bind("get /posting/manage")>]
+            [<RenderWith(@"Views\Posting\Ad\Manage\myAds.django"); ReflectedDefinition>]
+            let manageC  (currentUser: Entities.user) = 
+                let unpublished = Postings.byOwner currentUser false
+                let published = Postings.byOwner currentUser true
+                unpublished, published

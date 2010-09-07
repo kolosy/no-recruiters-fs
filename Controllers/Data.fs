@@ -15,7 +15,6 @@ module Data =
 
     module Entities =
         type tag = {
-//            id: string; rev: string;
             tagText: string
             safeText: string
             }
@@ -133,8 +132,9 @@ module Data =
                 let t = 
                     match tags with 
                     | Some t when (List.length t) > 0 -> 
-                        sprintf "text:\"%s*\" or title:\"%s*\" and (tag:%s)" text text
-                            (System.String.Join(" or tag:", Array.ofList (List.map (fun (e: Entities.tag) -> e.safeText)  t)))
+                        (System.String.Join(" or tag:", Array.ofList (List.map (fun (e: Entities.tag) -> e.safeText)  t)))
+                        |> (if String.IsNullOrWhiteSpace text then sprintf "(tag:%s)"
+                            else sprintf "(text:\"%s*\" or title:\"%s*\") and (tag:%s)" text text)
                     | _ -> sprintf "text:\"%s*\" or title:\"%s*\"" text text 
                 
                 Fti.selectRecords<Entities.posting> (
@@ -142,6 +142,12 @@ module Data =
                     Fti.q t
                     )
                 
+        let byOwner user (published: bool) =
+            selectRecords<Entities.posting> (
+                query "items" "byOwner" database
+                |> byKey [| box user.id; box published |]
+                )
+
         let byId id = 
             id |> from<Entities.posting> database
 
