@@ -47,14 +47,29 @@ namespace NoRecruiters.Controllers
         [<Bind("get /resume/{shortName}")>]
         [<RenderWith("Views/Posting/view.django"); ReflectedDefinition>]
         let viewC (shortName: string) (contentType: string option) (defaultContentType: string) =
-            Postings.byShortName shortName |> named "posting",
-            defaultContentType |> named "contentType"
+             (match Postings.byShortName shortName with
+              | Some p -> Postings.save {p with views = p.views + 1}
+              | None -> Postings.empty() )|> named "posting",
+             defaultContentType |> named "contentType"
+        
+        [<Bind("get /resume/preview/byname/{shortName}")>]
+        [<RenderWith("Views/Posting/Resume/preview.django"); ReflectedDefinition>]
+        let previewC (context: ictx)(shortName: string) (posting: Entities.posting option) =
+            if posting.IsNone then
+                context.Transfer("/posting/resume/byname/")
+
             
     module Manage =
+    
         module Ad = 
-            [<Bind("get /posting/ad/byname/{shortName}")>]
-            [<RenderWith("Views/Posting/Ad/edit.django"); ReflectedDefinition>]
-            let displayC (posting: Entities.posting option) = 
+
+            [<Bind("get /posting/{contentType}/byname/{shortName}")>]
+            [<RenderWith("Views/Posting/edit.django"); ReflectedDefinition>]
+            let displayC (context: ictx) (contentType: string) (posting: Entities.posting option) = 
+                match contentType with
+                |"resume" -> context.Response.RenderWith("Views/Posting/Resume/edit.django")
+                |"ad" -> context.Response.RenderWith("Views/Posting/Ad/edit.django")
+                | _ -> context.Transfer("/static/bug")
                 (match posting with 
                  | Some p -> List.map (fun (e: Entities.tag) -> e.tagText) p.tags
                  | None -> []) |> named "tags"
@@ -67,9 +82,9 @@ namespace NoRecruiters.Controllers
                 published: string
             }
 
-            [<Bind("post /posting/ad/byname/{shortName}")>]
-            [<RenderWith("Views/Posting/Ad/edit.django"); ReflectedDefinition>]
-            let updateC (context: ictx) (data: adForm) (shortName: string) (posting: Entities.posting option) (currentUser: Entities.user) = 
+            [<Bind("post /posting/{contentType}/byname/{shortName}")>]
+            [<RenderWith("Views/Posting/edit.django"); ReflectedDefinition>]
+            let updateC (context: ictx) (data: adForm) (contentType: string)(shortName: string) (posting: Entities.posting option) (currentUser: Entities.user) = 
                 let posting = 
                     match normalize data.published with 
                     | "" -> Postings.save { (match posting with | Some p -> p | None -> Postings.empty()) with 
@@ -79,15 +94,57 @@ namespace NoRecruiters.Controllers
                                              shorttext = Postings.makeShortText data.detail
                                              updatedOn = System.DateTime.Now
                                              contents = data.detail 
-                                             tags = Tags.parseAndDedupe data.tags}
+                                             tags = Tags.parseAndDedupe data.tags
+                                             contentType = Content.fromString contentType
+                                             }
                     | _ -> Postings.save { (match posting with | Some p -> p | None -> failwith "Can't publish an empty posting") with 
                                             published = (data.published.ToLower() = "true") }
-
-                context.Transfer("/posting/manage")
+                match contentType with 
+                | "ad" -> context.Transfer("/posting/manage")
+                | "resume" -> context.Transfer("/resume/" + shortName)
+                | _ -> context.Transfer("static/bug")
 
             [<Bind("get /posting/manage")>]
             [<RenderWith(@"Views\Posting\Ad\Manage\myAds.django"); ReflectedDefinition>]
-            let manageC  (currentUser: Entities.user) = 
+            let manageC  (currentUser:Entities.user) = 
                 let unpublished = Postings.byOwner currentUser false
                 let published = Postings.byOwner currentUser true
                 unpublished, published
+
+        module Apply = 
+            [<Bind("get /posting/apply/{contentType}/{shortName}")>]
+            [<RenderWith("Views/Posting/apply.django"); ReflectedDefinition>]
+            let applyDisplayC (context :ictx) (contentType: string) (shortName: string) (posting: Entities.posting) =
+                match contentType with
+                |"resume" -> context.Response.RenderWith("Views/Posting/Resume/apply.django")
+                |"ad" -> context.Response.RenderWith("Views/Posting/Ad/apply.django")
+                | _ -> context.Transfer("/static/bug")
+                Postings.byShortName shortName |> named "posting"
+
+            [<FormData(false)>]
+            type applyForm = {
+                comment: string
+            }
+
+            [<Bind("post /posting/apply/{contentType}/{shortName}")>]
+            [<RenderWith("Views/Posting/applied.django"); ReflectedDefinition>]
+            let applyC  (contentType: string) (currentUser: Entities.user)  (comment:string form) (data: applyForm) (shortName: string)  = 
+
+                match Postings.byShortName shortName with
+                |Some p ->
+                        let application = {Applications.empty() with 
+                                            submittedPostingId = p.id
+                                            submittedOn = System.DateTime.Now
+                                            submittedBy = currentUser
+                                            comment = data.comment
+                                            headingLink = "/" + contentType + "/" + shortName
+                                            moreLink = "/" + contentType + "/" + shortName
+                                            shortPostingText = p.shorttext}
+                        Postings.save { p with applications = ( application:: p.applications  ) } |> named "posting"
+                |None -> failwith("No posting by ShortName")
+
+
+            [<Bind("get /posting/ad/applicants/byId/{adId}")>]
+            [<RenderWith("Views/Posting/Ad/Manage/applicants.django"); ReflectedDefinition>]
+            let viewApplicants (currentUser: Entities.user) =
+                Postings.byOwner currentUser true |> named "postings"

@@ -1,0 +1,37 @@
+﻿{% extends "Views\base.django" %}
+
+{% block title %}
+Welcome to NoRecruiters!
+{% endblock %}
+
+{% block content %}
+<div id="help" runat="server" visible="false" >
+    <h2 class="smallHeading">
+        Help
+    </h2>
+    
+    <div class="content" style="padding: 5px; padding-top: 15px">
+
+        <span class="messageStart">Here's a list</span> <span class="messageContents">&nbsp;of some frequently asked questions.</span><br /><br />
+
+        <b>How do companies get a hold of people?</b><br />
+        Companies are presented with a "contact" option when viewing resumes. The contact feature allows a company to send a short message 
+        and a link to their NoRecruiters profile to a potential candidate. This information goes out via email to the candidate. At no point 
+        is this email disclosed to anyone. <br /><br />
+
+        <b>How do people apply to companies?</b><br />
+        People are presented with an "apply" option when viewing postings. This feature allows a potential candidate to send a short message 
+        along with their NoRecruiters resume to a company. This information is then visible in the <b>manage</b> section of a company's view.
+        <br /><br />
+
+        <b>I already have a resume in Microsoft Word format. Do I have to re-type it?</b><br />
+        No. The <a href="http://tinymce.moxiecode.com/" target="_blank">TinyMCE</a> control that we use for profiles allows you to copy-paste rich text such 
+        as HTML or Word documents directly into it.<br /><br />
+
+        <br /><br />
+        Don't see what you need? Don't hesitate to <a href='{{root}}/static/contact'>contact us</a>.
+
+    </div>
+</div>
+
+{% endblock %}

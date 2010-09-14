@@ -15,7 +15,7 @@ NoRecruiters :: {{posting.heading}}
         </span>
     </h2>
 <div class="content">
-    {% ifnotequal posting.User currentUser %}
+    {% ifnotequal posting.userId currentUser.id %}
     <div class="viewPostingHeader" >
         <a href="{% url '/posting/apply/{0}/{1}' contentType posting.shortname %}">
             {% ifequal contentType "resume" %}

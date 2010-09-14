@@ -1,0 +1,21 @@
+﻿{% extends "Views\base.django" %}
+
+{% block title %}
+Welcome to NoRecruiters!
+{% endblock %}
+
+{% block content %}
+<div id="contact" runat="server" visible="false" >
+    <h2 class="smallHeading">
+        Contact Us
+    </h2>
+
+    <div class="content" style="padding: 5px">
+
+        <span class="messageStart">We know we're popular</span><span class="messageContents">, but we'd love to hear from you.</span><br /><br />
+
+        Feel free to send questions/comments/concerns to <a href="mailto:contact@no-recruiters.com?subject=you guys rock!">contact@no-recruiters.com</a>.
+    </div>
+</div>
+
+{% endblock %}

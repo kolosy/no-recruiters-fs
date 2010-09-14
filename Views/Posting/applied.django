@@ -1,4 +1,4 @@
-﻿{% extends "Templates\base.django" %}
+﻿{% extends "Views\base.django" %}
 
 {% block title %}
 NoRecruiters :: Contact

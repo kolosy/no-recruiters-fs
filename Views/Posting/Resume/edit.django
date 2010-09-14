@@ -1,0 +1,25 @@
+﻿{% extends "Views\Posting\edit.django" %}
+
+{% block title %}
+NoRecruiters :: Edit My Resume
+{% endblock %}
+
+{% block heading %} Post a resume {%endblock%}
+{% block submitUrl %}{% url "/posting/resume/byname/{0}"  posting.shortname|default:shortName %}{%endblock%}
+
+{% block postingIntro %}
+    <span class="messageStart">Tell us about yourself</span> 
+    <span class="messageContents">&nbsp; and take a look at some of our handy suggestions:</span><br /><br />
+    <ul class="standardList" style="margin: 1em; margin-left: 2em;">
+        <li style="list-style: disc outside">Remember that the whole thing will be searchable, so no need to cram keywords
+        in to the description.</li>
+        <li style="list-style: disc outside">You can <b>copy/paste from Microsoft Word</b>, or other rich-text sources. Html too.</li>
+        <li style="list-style: disc outside">The information you put here will be <b>searchable</b>. Not just by NoRecruiters, but also by things like <b>Google</b>. Don't put in specifics like
+        your name, address, contact information, etc. NoRecruiters provides a mechanism for them to contact you, and for you to contact them.</li>
+        <li style="list-style: disc outside">If this is your first time on this page, remember that you will have to publish your resume before it is viewable. You can publish it on the "My Resume" page.</li>
+    </ul>
+    <br /> &nbsp;
+{% endblock %}
+
+{% block postingType %}resume{%endblock%}
+{% block cancelMethod %}{{root}}/resume/byname/{{posting.shortname}}{%endblock%}

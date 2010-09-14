@@ -10,7 +10,7 @@
         <div id="headerOutline">
             <ul id="mainNav">
                 {% ifequal userType "person" %}
-                <li runat="server" id="liMyResume"><a href='{% url "/posting/resume/preview/byname/{0}" currentUser.posting.shortname|default:"profile" %}'>My Resume</a></li>
+                <li runat="server" id="liMyResume"><a href='{% url "/resume/preview/byname/{0}" posting.shortname|default:"profile" %}'>My Resume</a></li>
                 {% else %}
                     {% ifequal userType "company" %}
                     <li runat="server" id="liCompanyProfile"><a href='{% url "/posting/ad/byname/profile" %}'>Company Profile</a></li>
@@ -27,7 +27,7 @@
                     <li runat="server" id="liAbout" class="leftEnd"><a href='{% url "/static/about" %}'>ABOUT</a></li>
                     <li runat="server" id="liHelp"><a href='{% url "/static/help" %}'>HELP</a></li>
                     {% if currentUser %}
-                    <li runat="server" id="liProfile"><a href='{% url "/profile" %}'>PROFILE</a></li>
+                    <li runat="server" id="liProfile"><a href='{% url "/profile" %}'>PROFILE {{currentUser.userName}}</a></li>
                     <li runat="server" id="liLogout"><a href='{% url "/auth/signout" %}'>LOG OUT</a></li>
                     {% else %}
                     <li runat="server" id="liSignIn"><a href='{% url "/auth/signin" %}'>SIGN IN</a></li>

@@ -1,11 +1,11 @@
 ﻿{% extends "Views\Posting\edit.django" %}
 
 {% block title %}
-NoRecruiters :: Edit My Resume
+NoRecruiters :: Edit My Ad
 {% endblock %}
 
 {% block heading %} Post an ad{%endblock%}
-{% block submitUrl %}{% url "/posting/ad/byname/{0}" posting.shortname|default:shortName %}{%endblock%}
+{% block submitUrl %}{% url "/posting/ad/byname/{0}"  posting.shortname|default:shortName %}{%endblock%}
 
 {% block postingIntro %}
     <span class="messageStart">Tell us about {{jobHeading}}</span> <span class="messageContents">&nbsp;and take a look at some of our handy suggestions:</span><br /><br />
@@ -22,5 +22,5 @@ NoRecruiters :: Edit My Resume
     <br /> &nbsp;
 {% endblock %}
 
-{% block postingType %}job description{%endblock%}
+{% block postingType %}Job description{%endblock%}
 {% block cancelMethod %}{% url '/posting/manage' %}{%endblock%}

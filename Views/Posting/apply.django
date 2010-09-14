@@ -1,4 +1,4 @@
-﻿{% extends "Templates\base.django" %}
+﻿{% extends "Views\base.django" %}
 
 {% block title %}
 NoRecruiters :: Contact
@@ -9,9 +9,9 @@ NoRecruiters :: Contact
 <h2 class="smallHeading">
     Contact</h2>
 <div class="content" style="padding: 5px;">
-    {% if currentUser.Posting %}
+    {% if currentUser.postingId %}
     <div>
-        <form action="{{root}}/posting/apply/{{appContentType}}/{{shortName}}" method="post">
+        <form action="{% block submitUrl %}{%endblock%}" method="post">
             <span class="messageStart">Would you like to</span> <span class="messageContents">&nbsp;customize
                 your message?</span><br />
             <br />
@@ -29,7 +29,7 @@ NoRecruiters :: Contact
     <div style="text-align: center">
         <span class="messageStart">You should</span> <span class="messageContents">&nbsp;
             {% block profileMessage %}
-            create a <a href='{{root}}/posting/ad/profile'>profile</a> before you contact someone.
+            create a <a href='/posting/{{contentType}}/profile'>profile</a> before you contact someone.
             {% endblock %}
         </span>
     </div>

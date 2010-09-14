@@ -1,0 +1,23 @@
+﻿{% extends "Views\base.django" %}
+
+{% block title %}
+Welcome to NoRecruiters!
+{% endblock %}
+
+{% block content %}
+
+<div id="bug" runat="server" visible="false" >
+    <h2 class="smallHeading">
+        Bug!
+    </h2>
+
+    <div class="content" style="padding: 5px">
+
+        <span class="messageStart">We've done our best</span> <span class="messageContents">&nbsp;to keep things working right.</span><br /><br />
+        But since we're pretty small, we haven't had the time to try what you just did, or any other variation of typing with our left foot
+        while playing tetris on our iPhone. So we'd really appreciate it if you told us the what and the how <a href="https://kolosy.fogbugz.com/default.asp?pg=pgPublicEdit">here</a>.
+
+    </div>
+</div>
+
+{% endblock %}

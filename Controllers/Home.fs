@@ -34,7 +34,7 @@ namespace NoRecruiters.Controllers
         let invalidNames = new Regex(@"\\|/|\.\.|:", RegexOptions.Compiled)
         [<Bind("/static/{contentId}"); ReflectedDefinition>]
         let staticC (ctx: ictx) contentId = 
-            if not (invalidNames.IsMatch(contentId)) then
+            if invalidNames.IsMatch(contentId) then
                 raise (WebException(StatusCode.NotFound, sprintf "%A could not be found" contentId))
             else
                 ctx.Response.RenderWith(sprintf "static/%s.django" contentId)

@@ -1,0 +1,30 @@
+﻿{% extends "Views\base.django" %}
+
+{% block title %}
+Welcome to NoRecruiters!
+{% endblock %}
+
+{% block content %}
+<div id="about" runat="server" visible="false" >
+    <h2 class="smallHeading">
+        NoRecruiters is a way to cut out the middle man. For Free.
+    </h2>
+
+    <div class="content" style="padding: 5px; padding-top: 15px">
+
+        <span class="messageStart">For developers</span> <span class="messageContents">&nbsp;this means not wasting your time</span><br /><br />
+        dealing with people who will send you to a data entry position just because you can type quickly. It means getting the rate that you're worth, 
+        and not forking part of that over to someone else. It means an end to meaningless interviews that try to see if you're "presentable". You are, 
+        and stop asking. <br /><br />
+        
+        It's a way to filter through the noise of other job boards, where the same company is reposted 20 times by 10 different search firms, all
+        of whom want you to sign an exclusivity agreement. It's another way. and it's <b>free.</b><br /><br />
+
+        <span class="messageStart">For companies</span> <span class="messageContents">&nbsp;this means paying what the candidate is worth</span><br /><br />
+        
+        and getting qualified people in the process. NoRecruiters is a community of individuals that are web-savvy and look for alternative ways to 
+        find the positions they want. This creates a community of individuals that know their trade and know their worth.
+    </div>
+</div>
+
+{% endblock %}

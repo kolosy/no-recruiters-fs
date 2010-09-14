@@ -9,16 +9,38 @@ module Data =
     open System.Text.RegularExpressions
     open System
 
-    let database = 
+    let database : CouchDatabase = 
         server "localhost" 5984 |>
-        db "nr"
+        db "nr" :?> CouchDatabase
 
     module Entities =
         type tag = {
             tagText: string
             safeText: string
             }
+        type user = {
+            id: string
+            rev: string
+            roles: string list
+            userName: string
+            password: string
+            email: string
+            firstName: string
+            lastName: string
+            postingId: string
+            userType: Enums.User.UserType
+            }
 
+        
+        type application = {
+            submittedPostingId: string
+            submittedOn: DateTime
+            submittedBy: user
+            comment: string
+            headingLink: string
+            moreLink: string
+            shortPostingText: string
+        }
         type posting = {
             id: string; rev: string;
             tags: tag list
@@ -35,20 +57,9 @@ module Data =
             active: bool
             contents: string
             contentType: Enums.Content.ContentType
+            applications: application list
             }
 
-        type user = {
-            id: string
-            rev: string
-            roles: string list
-            userName: string
-            password: string
-            email: string
-            firstName: string
-            lastName: string
-            postingId: string
-            userType: Enums.User.UserType
-            }
     
     module Users =
         open Entities
@@ -62,7 +73,7 @@ module Data =
 
         let byName username =
             match selectRecords<Entities.user> (
-                                                query "users" "all" database 
+                                                query "users" "all" database
                                                 |> byKey username
                                                 |> limitTo 1
                                                 ) with
@@ -138,11 +149,11 @@ module Data =
                     | _ -> sprintf "text:\"%s*\" or title:\"%s*\"" text text 
                 
                 Fti.selectRecords<Entities.posting> (
-                    Fti.query "items" "all" database |>
+                    Fti.query "_design/items" "all" database |>
                     Fti.q t
                     )
                 
-        let byOwner user (published: bool) =
+        let byOwner (user: user) (published: bool) =
             selectRecords<Entities.posting> (
                 query "items" "byOwner" database
                 |> byKey [| box user.id; box published |]
@@ -181,6 +192,7 @@ module Data =
             active = false
             contents = System.String.Empty
             contentType = Enums.Content.ContentType.Resume
+            applications = []
         }
 
         let htmlPattern = Regex(@"<(.|\n)*?>", RegexOptions.Compiled)
@@ -195,3 +207,15 @@ module Data =
             let salt = Random().Next(1000000).ToString()
             let sanitzed = Util.sanitize heading
             sanitzed.[0..System.Math.Min(heading.Length-salt.Length, sanitzed.Length)]
+
+    module Applications =
+        open Entities
+        let empty() = {
+            submittedPostingId = ""
+            submittedOn = System.DateTime.MinValue
+            submittedBy = Users.empty()
+            comment = ""
+            headingLink = ""
+            moreLink = ""
+            shortPostingText = ""
+    }

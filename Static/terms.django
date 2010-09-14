@@ -1,0 +1,174 @@
+﻿{% extends "Viewes\base.django" %}
+
+{% block title %}
+Welcome to NoRecruiters!
+{% endblock %}
+
+{% block content %}
+
+<div id="terms" runat="server" visible="false" >
+    <h2 class="smallHeading">
+        Terms of use
+    </h2>
+
+    <div class="content" style="padding: 5px">
+
+        <span class="messageStart">Really?</span> <span class="messageContents">&nbsp;You care? You're actually gonna read it? Hm. Alright, you asked for it -</span><br /><br />
+This page states the Terms of Use ("Terms") under which You (as defined below) may use www.no-recruiters.com ("no-recruiters.com"), an on-line service to post and search employment opportunities. 
+<br/>
+Please read these Terms carefully. If You do not accept the Terms stated here, do not use no-recruiters.com and its services. By using no-recruiters.com, You agree to be bound by these Terms, including the no-recruiters Privacy Statement. 
+<br/>
+no-recruiters may revise these Terms at any time by posting an updated version to this Web page. You should visit this page periodically to review the most current Terms because they are binding on You. The terms "You" and "User" as used herein refer to all individuals and/or entities accessing no-recruiters.com for any reason. The term "post" as used herein shall mean information that You submit, publish or display on any no-recruiters Site (as defined below). 
+<br/>
+<br/>
+1. Eligibility.
+<br/>
+You must be 18 years of age or older, or the age of majority as that is defined in your jurisdiction, whichever is older, to visit or use no-recruiters.com in any manner. By visiting no-recruiters.com or accepting these Terms, You represent and warrant to no-recruiters that You have reached the age of majority in your jurisdiction, and that You have the right, authority and capacity to agree to and abide by these Terms. You also represent and warrant to no-recruiters that You will use no-recruiters.com in a manner consistent with any and all applicable laws and regulations. 
+<br/>
+<br/>
+2. Use of no-recruiters Content.
+<br/>
+no-recruiters authorizes You to view and access a single copy of the content available on or from no-recruiters.com solely for your personal use. The contents of no-recruiters.com, and of all other Web sites under no-recruiters's control, whether partial or otherwise (no-recruiters.com and such other Web sites are sometimes collectively referred to as "no-recruiters Sites") such as text, graphics, images, logos, button icons, software and other no-recruiters content (collectively, "no-recruiters Content"), are protected under both United States and foreign copyright, trademark and other laws. All no-recruiters Content is the property of no-recruiters or its content suppliers or clients. The compilation (meaning the collection, arrangement and assembly) of all content on the no-recruiters Sites is the exclusive property of no-recruiters and is protected by United States and foreign copyright, trademark, and other laws. Unauthorized use of the no-recruiters Content may violate these laws, and is strictly prohibited. You must retain all copyright, trademark, service mark and other proprietary notices contained in the original no-recruiters Content on any authorized copy You make of the no-recruiters Content. 
+<br/>
+You agree not to sell or modify the no-recruiters Content or reproduce, display, publicly perform, distribute, or otherwise use the no-recruiters Content in any way for any public or commercial purpose, in connection with products or services that are not those of no-recruiters.com, in any other manner that is likely to cause confusion among consumers, that disparages or discredits no-recruiters or its licensors, that dilutes the strength of no-recruiters's or its licensor’s property, or that otherwise infringes no-recruiters's or its licensor’s intellectual property rights. You further agree to in no other way misuse no-recruiters Content that appears on this Site. The use of the no-recruiters Content on any other Web site or in a networked computer environment for any purpose is prohibited. Any code that no-recruiters creates to generate or display any no-recruiters Content or the pages making up any no-recruiters Site is also protected by no-recruiters's copyright and you may not copy or adapt such code. 
+<br/>
+<br/>
+3. no-recruiters Site Restrictions.
+<br/>
+Users may not use any no-recruiters Site in order to transmit, post, distribute, store or destroy material, including without limitation, no-recruiters Content, (a) in violation of any applicable law or regulation, (b) in a manner that will infringe the copyright, trademark, trade secret or other intellectual property rights of others or violate the privacy, publicity or other personal rights of others, or (c) that is defamatory, obscene, threatening, abusive or hateful. 
+<br/>
+Users are also prohibited from violating or attempting to violate the security of any no-recruiters Site, including without limitation, the following activities: (a) accessing data not intended for such User or logging into a server or account which the User is not authorized to access; (b) attempting to probe, scan or test the vulnerability of a system or network or to breach security or authentication measures without proper authorization; (c) attempting to interfere with service to any User, host or network, including, without limitation, via means of submitting a virus to any no-recruiters Site, overloading, "flooding", "spamming", "mailbombing" or "crashing"; or (d) forging any TCP/IP packet header or any part of the header information in any e-mail or newsgroup posting. Violations of system or network security may result in civil and/or criminal liability. no-recruiters will investigate occurrences which may involve such violations and may involve, and cooperate with, law enforcement authorities in prosecuting Users who are involved in such violations. 
+<br/>
+In order to ensure a safe and effective experience for all of our customers, no-recruiters reserves the right to limit the amount of data (including resume views) that may be accessed by You in any given time period. These limits may be amended in no-recruiters’s sole discretion from time to time. 
+<br/>
+<br/>
+4. Specific Prohibited Uses.
+<br/>
+The job posting and other features of no-recruiters.com may be used only for lawful purposes by individuals seeking employment and career information and employers seeking employees. 
+<br/>
+no-recruiters specifically prohibits any other use of no-recruiters.com, and all Users agree not to do any of the following: (a) post any jobs on any no-recruiters Site for any competitor of no-recruiters or post jobs or other content that contains links to any site competitive with no-recruiters(b) post jobs for modeling or talent or talent scouting positions on any no-recruiters Site; (c) post or submit to any no-recruiters Site any incomplete, false or inaccurate biographical information or information which is not your own; (d) post on any no-recruiters Site any franchise, pyramid scheme, "club membership", distributorship or sales representative agency arrangement or other business opportunity which requires an up front or periodic payment, pays commissions only (except for postings that make clear that the available job pays commission only and clearly describes the product or service that the job seeker would be selling, in which case such postings are permissible), or requires recruitment of other members, sub-distributors or sub-agents; (e) send unsolicited mail or e-mail, make unsolicited phone calls or send unsolicited faxes regarding promotions and/or advertising of products or services to a User of any no-recruiters Site; (f) delete or revise any material posted by any other person or entity; (g) take any action that imposes an unreasonable or disproportionately large load on any no-recruiters Site's infrastructure; (h) notwithstanding anything to the contrary contained herein, use or attempt to use any engine, software, tool, agent or other device or mechanism (including without limitation browsers, spiders, robots, avatars or intelligent agents) to navigate or search any no-recruiters Site other than the search engine and search agents available from no-recruiters on such no-recruiters Site and other than generally available third party web browsers (e.g., Internet Explorer, Firefox, Safari); (i) decipher, decompile, disassemble or reverse engineer any of the software comprising or in any way making up a part of any no-recruiters Site; (j) aggregate, copy or duplicate in any manner any of the no-recruiters Content or information available from any no-recruiters Site, without express written consent from no-recruiters; or (k) frame or link to any no-recruiters Content or information available from any no-recruiters Site. Unless you’re being cool about it. 
+<br/>
+no-recruiters does not necessarily monitor any materials posted, transmitted, or communicated to or within the Site. If you believe that something on the Site violates these Terms please contact our designated agent set forth in Section 10 below. 
+<br/>
+If notified by a User of User Content or other materials which allegedly do not conform to these Terms, no-recruiters may in its sole discretion investigate the allegation and determine whether to take any other actions whether to remove or request the removal of the User Content. no-recruiters has no liability or responsibility to Users for performance or nonperformance of such activities. 
+<br/>
+<br/>
+5. Registration Information.
+<br/>
+When You register with any no-recruiters Site, You will be asked to create a no-recruiters Account or other account and provide no-recruiters with certain information including, without limitation, a valid email address (your "Information"). Information you submit will be used in accordance with no-recruiters's Privacy Statement. 
+<br/>
+You understand and acknowledge that you have no ownership rights in your no-recruiters Account, and that if you cancel your no-recruiters Account, all your account information from no-recruiters, including resumes, Profiles, cover letters, network contacts, saved jobs, questionnaires and email mailing lists, will be marked as deleted in no-recruiters's databases and will be removed from any public area of the no-recruiters Sites. Information may continue to be available for some period of time because of delays in propagating such deletion through no-recruiters’s web servers. In addition, third parties may retain cached copies of your Information. 
+<br/>
+<br/>
+6. User Content and Submissions.
+<br/>
+You are solely responsible for your account information, employer account information or job postings, Profile, content (including, without limitation works in any form, media, or technology whether now known or later developed), messages, audio, video, photos, text, images, compilations or other information ("User Content") that You post on any no-recruiters Site or transmit to other Users. You agree that in submitting User Content or otherwise using any no-recruiters Site that you will not impersonate any person, or submit any materials to no-recruiters that are false, inaccurate, misleading, unlawful, or are otherwise in violation of your obligations under these Terms. 
+<br/>
+By posting User Content to any public area of any no-recruiters Site, including without limitation, message boards, Profiles, forums, contests and chat rooms, You automatically grant to no-recruiters and its affiliates an irrevocable, royalty-free, perpetual, fully paid non-exclusive right (including moral rights) and worldwide license to use, copy, reproduce, modify, adapt, publish, translate, communicate to the public, perform, display, and distribute such User Content (in whole or in part) and to prepare derivative works of, or incorporate into other works (in any form, media or technology now known or later developed, for the full term of any rights that may exist in such content) such User Content, and to grant and authorize sublicenses thereof (through multiple tiers). 
+<br/>
+You also represent and warrant that You have the right to grant or that the holder of any rights, including moral rights in such content, has completely and effectively waived all such rights and validly and irrevocably granted to You the right to grant, the license stated above. If you post User Content in any public area of any no-recruiters Site, You also permit any User to access, display, view, store and reproduce such User Content for personal use. Subject to the foregoing, the owner of such User Content placed on any no-recruiters Site retains any and all rights that may exist in such User Content. 
+<br/>
+no-recruiters acts as a passive conduit for the online distribution and publication of User Content and has no obligation to screen User Content, communications or information in advance and is not responsible for screening or monitoring User Content posted by Users. However, no-recruiters may review and remove any User Content that, in its sole judgment, violates these Terms, violates applicable laws, rules or regulations, is abusive, disruptive, offensive or illegal, or violates the rights of, or harms or threatens the safety of, Users of any no-recruiters Site. no-recruiters reserves the right to expel Users and prevent their further access to the no-recruiters Sites and/or use of no-recruiters services for violating the Terms or applicable laws, rules or regulations. no-recruiters may take any action with respect to User Content that it deems necessary or appropriate in its sole discretion if it believes that such User Content could create liability for no-recruiters, damage no-recruiters’s brand or public image, or cause no-recruiters to lose (in whole or in part) the services of its ISPs or other suppliers. 
+<br/>
+no-recruiters does not represent or guarantee the truthfulness, accuracy, or reliability of User Content or any other communications posted by Users or endorse any opinions expressed by Users. You acknowledge that any reliance on material posted by other Users will be at your own risk. 
+<br/>
+The following is a partial list of User Content that is prohibited on the no-recruiters Sites. The list below is for illustration only and is not a complete list of all prohibited User Content. 
+<br/>
+Content that: 
+• is implicitly or explicitly offensive, such as User Content that engages in, endorses or promotes racism, bigotry, discrimination, hatred or physical harm of any kind against any group or individual; 
+• harasses, incites harassment or advocates harassment of any group or individual; 
+• involves the transmission of "junk mail", "chain letters," or unsolicited mass mailing or "spamming"; 
+• promotes or endorses false or misleading information or illegal activities or conduct that is abusive, threatening, obscene, defamatory or libelous; 
+• promotes or endorses an illegal or unauthorized copy of another person's copyrighted work, such as providing or making available pirated computer programs or links to them, providing or making available information to circumvent manufacture-installed copy-protect devices, or providing or making available pirated music or other media or links to pirated music or other media files; 
+• contains restricted or password only access pages, or hidden pages or images; 
+• displays or links to pornographic, indecent or sexually explicit material of any kind; 
+• provides or links to material that exploits people under the age of 18 in a sexual, violent or other manner, or solicits personal information from anyone under 18; or 
+• provides instructional information about illegal activities or other activities prohibited by these Terms, including without limitation, making or buying illegal weapons, violating someone's privacy, providing or creating computer viruses or pirating any media; and 
+• solicits passwords or personal identifying information from other Users. 
+<br/>
+If notified by a User of User Content or other materials which allegedly do not conform to these Terms, no-recruiters may in its sole discretion investigate the allegation and determine whether to take any other actions whether to remove or request the removal of the User Content. no-recruiters has no liability or responsibility to Users for performance or nonperformance of such activities. 
+<br/>
+We appreciate hearing from our Users and welcome your comments regarding our services and the no-recruiters Sites. Please be advised, however, that our policy does not permit us to accept or consider creative ideas, suggestions, inventions or materials other than those which we have specifically requested. While we do value your feedback on our services, please be specific in your comments regarding our services and do not submit creative ideas, inventions, suggestions, or materials. If, despite our request, You send us creative suggestions, ideas, drawings, concepts, inventions, or other information (collectively the "Submission"), the Submission shall be the property of no-recruiters. None of the Submission shall be subject to any obligation of confidentiality on our part and we shall not be liable for any use or disclosure of any Submission. no-recruiters shall own exclusively all now known or later discovered rights to the Submission and shall be entitled to unrestricted use of the Submission for any purpose whatsoever, commercial or otherwise, without compensation to You or any other person. 
+<br/>
+<br/>
+7. Registration and Password.
+<br/>
+You are responsible for maintaining the confidentiality of your employer account, no-recruiters Account, Profile and passwords, as applicable.. You may not share your password or other account access information with any other party, temporarily or permanently, and You shall be responsible for all uses of your no-recruiters.com registrations and passwords, whether or not authorized by You. You agree to immediately notify no-recruiters of any unauthorized use of your employer account, as the case may be. 
+<br/>
+<br/>
+8. Identification Of Agent To Receive Notification And Elements Of Notification Of Claimed Copyright or Trademark Infringement.
+<br/>
+If You believe that your copyrighted work or trademark has been uploaded, posted or copied to any no-recruiters Site and is accessible on such no-recruiters Site in a way that constitutes copyright or trademark infringement, please print and complete the no-recruiters Proprietary Rights Complaint Process and Notification Form and send such completed form to our designated agent. 
+<br/>
+<br/>
+9. Policy Regarding Termination Of Users Who Repeatedly Infringe The Copyright Or Other Intellectual Property Rights Of Others.
+<br/>
+no-recruiters, (owned by Sticky Holdings, LLC) and all of its affiliated companies respect the intellectual property of others, and we ask our Users and content partners to do the same. The unauthorized posting, reproduction, copying, distribution, modification, public display or public performance of copyrighted works constitutes infringement of the copyright owners rights. As a condition to your use of no-recruiters.com, You agree not to use no-recruiters.com or any other no-recruiters Site to infringe the intellectual property rights of others in any way. We will terminate the accounts of any no-recruiters.com Users, and block access to no-recruiters.com and/or the other no-recruiters Sites of any Users who are repeat infringers of the copyrights, or other intellectual property rights, of others. We reserve the right to take these actions at any time, in our sole discretion, with or without notice, and without any liability to the User who is terminated or to the User whose access is blocked. 
+<br/>
+<br/>
+10. no-recruiters's Liability.
+<br/>
+no-recruiters.com acts as a venue for employers to post job opportunities and candidates to post resumes and Profiles and does not screen or censor the listings, including Profiles offered. no-recruiters is not involved in the actual transaction between employers and candidates. As a result, no-recruiters has no control over User Content, the quality, safety or legality of the jobs or resumes posted, the truth or accuracy of the listings, the ability of employers to offer job opportunities to candidates or the ability of candidates to fill job openings and no-recruiters makes no representations about any jobs, resumes or User Content on no-recruiters.com. no-recruiters may take any action with respect to User Content that it deems necessary or appropriate in its sole discretion if it believes that such User Content could create liability for no-recruiters, damage no-recruiters’s brand or public image, or cause no-recruiters to lose (in whole or in part) the services of its ISPs or other suppliers. While no-recruiters reserves the right in its sole discretion to remove User Content, job postings, resumes or other material from no-recruiters.com from time to time, no-recruiters does not assume any obligation to do so and disclaims any liability for failing to take any such action. 
+<br/>
+In addition, note that there are risks, including but not limited to the risk of physical harm, of dealing with strangers, foreign nationals, underage persons or people acting under false pretenses. You assume all risks associated with dealing with other Users with whom You come in contact through no-recruiters.com and/or the other no-recruiters Sites. By its very nature, other people's information may be offensive, harmful or inaccurate, and in some cases will be mislabeled or deceptively labeled. We expect that You will use caution and common sense when using no-recruiters.com and/or the other no-recruiters Sites. 
+<br/>
+Because User authentication on the Internet is difficult, no-recruiters cannot and does not confirm that each User is who they claim to be. Because we do not and cannot be involved in User-to-User dealings or control the behavior of participants on any no-recruiters Site, in the event that You have a dispute with one or more Users, You release no-recruiters (and our agents and employees) from claims, demands and damages (actual and consequential and direct and indirect) of every kind and nature, known and unknown, suspected and unsuspected, disclosed and undisclosed, arising out of or in any way connected with such disputes. 
+<br/>
+If You are a California resident, You waive California Civil Code Section 1542, which says: "A general release does not extend to claims which the creditor does not know or suspect to exist in his or her favor at the time of executing the release, which if known by him or her must have materially affected his or her settlement with the debtor." 
+<br/>
+The no-recruiters Sites and the no-recruiters Content may contain inaccuracies or typographical errors. no-recruiters makes no representations about the accuracy, reliability, completeness, or timeliness of any no-recruiters Site or the no-recruiters Content. The use of all no-recruiters Sites and the no-recruiters Content is at your own risk. Changes are periodically made to no-recruiters Sites and may be made at any time. You acknowledge and agree that You are solely responsible for the form, content and accuracy of any resume or material contained therein placed by You on the no-recruiters Sites. Employers are solely responsible for their postings on no-recruiters Sites. no-recruiters is not to be considered to be an employer with respect to your use of any no-recruiters Site and no-recruiters shall not be responsible for any employment decisions, for whatever reason, made by any entity posting jobs on any no-recruiters Site. 
+<br/>
+no-recruiters cannot guarantee and does not promise any specific results from use of no-recruiters.com or any no-recruiters Site. No advice or information, whether oral or written, obtained by a User from no-recruiters or through or from no-recruiters.com or any other no-recruiters Site shall create any warranty not expressly stated herein. 
+<br/>
+<br/>
+11. Disclaimer of Warranty.
+<br/>
+NO-RECRUITERS DOES NOT WARRANT THAT ANY NO-RECRUITERS SITE WILL OPERATE ERROR-FREE OR THAT ANY NO-RECRUITERS SITE AND ITS SERVERS ARE FREE OF COMPUTER VIRUSES OR OTHER HARMFUL MECHANISMS. IF YOUR USE OF ANY NO-RECRUITERS SITE OR THE NO-RECRUITERS CONTENT RESULTS IN THE NEED FOR SERVICING OR REPLACING EQUIPMENT OR DATA, NO-RECRUITERS IS NOT RESPONSIBLE FOR THOSE COSTS. THE NO-RECRUITERS SITES AND NO-RECRUITERS CONTENT ARE PROVIDED ON AN "AS IS" BASIS WITHOUT ANY WARRANTIES OF ANY KIND. NO-RECRUITERS, TO THE FULLEST EXTENT PERMITTED BY LAW, DISCLAIMS ALL WARRANTIES, WHETHER EXPRESS OR IMPLIED, INCLUDING THE WARRANTY OF MERCHANTABILITY, FITNESS FOR PARTICULAR PURPOSE AND NON-INFRINGEMENT. NO-RECRUITERS MAKES NO WARRANTIES ABOUT THE ACCURACY, RELIABILITY, COMPLETENESS, OR TIMELINESS OF THE NO-RECRUITERS CONTENT, SERVICES, SOFTWARE, TEXT, GRAPHICS, AND LINKS. 
+<br/>
+<br/>
+12. Disclaimer of Consequential Damages.
+<br/>
+IN NO EVENT SHALL NO-RECRUITERS, ITS SUPPLIERS, OR ANY THIRD PARTIES MENTIONED ON ANY NO-RECRUITERS SITE BE LIABLE FOR ANY DAMAGES WHATSOEVER (INCLUDING, WITHOUT LIMITATION, INCIDENTAL AND CONSEQUENTIAL DAMAGES, LOST PROFITS, OR DAMAGES RESULTING FROM LOST DATA OR BUSINESS INTERRUPTION) RESULTING FROM THE USE OR INABILITY TO USE ANY NO-RECRUITERS SITE AND THE NO-RECRUITERS CONTENT, WHETHER BASED ON WARRANTY, CONTRACT, TORT, OR ANY OTHER LEGAL THEORY, AND WHETHER OR NOT NO-RECRUITERS IS ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. 
+<br/>
+<br/>
+13. Limitation of Liability.
+<br/>
+NO-RECRUITERS'S MAXIMUM LIABILITY ARISING OUT OF OR IN CONNECTION WITH ANY NO-RECRUITERS SITE OR YOUR USE OF THE NO-RECRUITERS CONTENT, REGARDLESS OF THE CAUSE OF ACTION (WHETHER IN CONTRACT, TORT, BREACH OF WARRANTY OR OTHERWISE), WILL NOT EXCEED $100. 
+<br/>
+<br/>
+14. Links to Other Sites.
+<br/>
+no-recruiters.com and certain other no-recruiters Sites contain links to third party Web sites. These links are provided solely as a convenience to You and not as an endorsement by no-recruiters of the contents on such third-party Web sites. no-recruiters is not responsible for the content of linked third-party sites and does not make any representations regarding the content or accuracy of materials on such third party Web sites. If You decide to access linked third-party Web sites, You do so at your own risk. 
+<br/>
+<br/>
+15. No Resale or Unauthorized Commercial Use.
+<br/>
+You agree not to resell or assign your rights or obligations under these Terms. You also agree not to make any unauthorized commercial use of any no-recruiters Site. 
+<br/>
+<br/>
+16. Indemnity.
+<br/>
+You agree to defend, indemnify, and hold harmless no-recruiters, its affiliates, and their respective officers, directors, employees and agents, from and against any claims, actions or demands, including without limitation reasonable legal and accounting fees, alleging or resulting from (i) any User Content or other material You provide to any no-recruiters Site, (ii) your use of any no-recruiters Content, or (iii) your breach of the terms of these Terms. no-recruiters shall provide notice to You promptly of any such claim, suit, or proceeding. 
+<br/>
+<br/>
+17. General.
+<br/>
+no-recruiters makes no claims that the no-recruiters Content may be lawfully viewed or accessed outside of the United States. Access to the no-recruiters Content may not be legal by certain persons or in certain countries. If You access a no-recruiters.com or other U.S.-based no-recruiters Sites from outside of the United States, You do so at your own risk and are responsible for compliance with the laws of your jurisdiction. These Terms are governed by the internal substantive laws of the Commonwealth of Massachusetts, without respect to its conflict of laws principles. Jurisdiction for any claims arising under this agreement shall lie exclusively with the state or federal courts within Boston, Massachusetts. If any provision of these Terms are found to be invalid by any court having competent jurisdiction, the invalidity of such provision shall not affect the validity of the remaining provisions of these Terms, which shall remain in full force and effect. No waiver of any term of these Terms shall be deemed a further or continuing waiver of such term or any other term. In addition, no-recruiters’s failure to enforce any term of these Terms shall not be deemed as a waiver of such term or otherwise affect no-recruiters’s ability to enforce such term at any point in the future. Except as expressly provided in an additional agreement, additional Terms for certain areas of no-recruiters.com, a particular "Legal Notice," or software license or material on particular no-recruiters.com pages, these Terms constitute the entire agreement between You and no-recruiters with respect to the use of no-recruiters.com. No changes to these Terms shall be made except by a revised posting on this page. 
+<br/>
+<br/>
+18. Additional Terms.
+<br/>
+Certain areas of no-recruiters.com and the other no-recruiters Sites are subject to additional Terms. By using such areas, or any part thereof, You agree to be bound by the additional Terms applicable to such areas. 
+<br/>
+By using any areas of this website or the other no-recruiters Sites that contain Google Maps, you agree to be bound by the Google Maps Terms of Use available at http://maps.google.com/help/terms_maps.html and the legal notices available at http://www.maps.google.com/help/legalnotices_maps.html as they may be updated from time to time. 
+<br/>
+<br/>
+19. Term and Termination
+<br/>
+These Terms will remain in full force and effect while You are a User of no-recruiters.com at any level. no-recruiters reserves the right, at its sole discretion, to pursue all of its legal remedies, including but not limited to removal of your User Content from no-recruiters.com and the other no-recruiters Sites and immediate termination of your registration with or ability to access no-recruiters.com and the other no-recruiters Sites and/or any other services provided to You by no-recruiters, upon any breach by You of these Terms or if no-recruiters is unable to verify or authenticate any information You submit to no-recruiters.com or pursuant to other no-recruiters Site registration. Even after You are no longer a User of no-recruiters.com, certain provisions of these Terms will remain in effect. 
+<br/>
+These Terms constitute a binding agreement between You and no-recruiters, and is accepted by You upon your use of the no-recruiters Site.     </div>
+</div>
+
+
+{% endblock %}

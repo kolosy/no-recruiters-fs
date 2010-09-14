@@ -13,7 +13,7 @@ NoRecruiters :: Search
             <td style="vertical-align: middle; text-align: right; width: 25%; padding-right: 3px;">
                 <span class="tags">popular: 
                     {% for tag in popularTags %} 
-                    <a href={% url "/postings/{0}/with-tag/{1}" contentType tag.safeText|urlencode %}">{{tag.TagText}}</a> 
+                    <a href = "/postings/{{contentType}}/with-tag/{{tag.safeText}}">{{tag.tagText}}</a> 
                     {% if not forloop.last %} ,&nbsp; {% endif %} 
                     {% endfor %} &nbsp;
                 </span>

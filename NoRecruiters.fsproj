@@ -45,10 +45,9 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>1568</DevelopmentServerPort>
+          <DevelopmentServerPort>11348</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>
-          </IISUrl>
+          <IISUrl>http://localhost/NoRecruitersFS</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
@@ -66,8 +65,7 @@
           <SQLDebugging>False</SQLDebugging>
           <ExternalProgram>
           </ExternalProgram>
-          <StartExternalURL>
-          </StartExternalURL>
+          <StartExternalURL>http://localhost/NoRecruitersFS</StartExternalURL>
           <StartCmdLineArguments>
           </StartCmdLineArguments>
           <StartWorkingDirectory>
@@ -90,15 +88,25 @@
     <Compile Include="Controllers\Postings.fs" />
     <Content Include="Web.config" />
     <Content Include="Default.htm" />
+    <None Include="Static\about.django" />
+    <None Include="Static\bug.django" />
+    <None Include="Static\contact.django" />
+    <None Include="Static\help.django" />
+    <None Include="Static\terms.django" />
     <None Include="Views\base.django" />
     <None Include="Views\Components\tinymce.html" />
     <None Include="Views\home.django" />
+    <None Include="Views\Posting\Ad\apply.django" />
     <None Include="Views\Posting\Ad\edit.django" />
+    <None Include="Views\Posting\Ad\Manage\applicants.django" />
     <None Include="Views\Posting\Ad\Manage\myAds.django" />
     <None Include="Views\Posting\applied.django" />
     <None Include="Views\Posting\apply.django" />
     <None Include="Views\Posting\edit.django" />
     <None Include="Views\Posting\flag.django" />
+    <None Include="Views\Posting\Resume\apply.django" />
+    <None Include="Views\Posting\Resume\edit.django" />
+    <None Include="Views\Posting\Resume\preview.django" />
     <None Include="Views\Posting\search.django" />
     <None Include="Views\Posting\view.django" />
     <None Include="Views\Profile\register.django" />

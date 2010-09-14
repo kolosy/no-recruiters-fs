@@ -1,0 +1,11 @@
+﻿{% extends "Views\Posting\apply.django" %}
+
+{% block submitUrl %}{% url "/posting/apply/resume/{0}"  posting.shortname|default:shortName %}{%endblock%}
+{% block profileMessage %}
+    create a <a href='/posting/ad/byname/profile'>profile</a> before you contact someone.
+{% endblock %}
+
+{% block message %}
+    Dear NoRecruiters user. We are very interested in your resume and would like to speak with you. 
+    Please contact us at your earliest convinience
+{% endblock %}

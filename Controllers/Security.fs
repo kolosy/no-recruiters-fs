@@ -82,7 +82,7 @@ namespace NoRecruiters.Controllers
                     | "new" | "" when System.String.IsNullOrWhiteSpace postingId -> Some <| Postings.empty()
                     | "" -> Postings.byId postingId
                     | _ -> Postings.byShortName shortName) with
-            | Some posting when not (posting.userId = currentUser.Value.id) && not (shortName = "new" || shortName = "profile")->
+            | Some posting when not (posting.userId = currentUser.Value.id) && not (shortName = "new" || shortName = "profile" || System.String.IsNullOrWhiteSpace shortName)->
                 raise (WebException(StatusCode.Forbidden, "unauthorized access"))
             | Some posting -> Some posting
             | None -> None |> named "posting"

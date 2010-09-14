@@ -86,7 +86,7 @@ namespace NoRecruiters.Controllers
             let rules = 
                 [(System.String.IsNullOrWhiteSpace (profile.username), "username", "Please provide a username");
                  (System.String.IsNullOrWhiteSpace (profile.password), "password", "Please provide a password");
-                 ((Users.byName profile.username).IsNone, "username", "A user with the same name already exists. Please choose another name")]
+                 ((Users.byName profile.username).IsSome, "username", "A user with the same name already exists. Please choose another name")]
 
             validate errors false rules
 
