@@ -4,6 +4,16 @@ namespace NoRecruiters.Enums
 
 open System
 
+module Action = 
+    type UserActionType =
+    | Recruiter = 1
+    | WrongTag = 2
+    | Spam = 3
+    | SelfDelete = 4
+
+    let asString (action: UserActionType) = Enum.GetName(typeof<UserActionType>,action).ToLower()
+    let fromString action = Enum.Parse(typeof<UserActionType>,action,true) :?> UserActionType
+
 module Content = 
     
     type ContentType =

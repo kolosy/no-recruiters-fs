@@ -57,7 +57,18 @@ namespace NoRecruiters.Controllers
         let previewC (context: ictx)(shortName: string) (posting: Entities.posting option) =
             if posting.IsNone then
                 context.Transfer("/posting/resume/byname/")
-
+        
+        
+        [<Bind("get /posting/flag/{flagType}/{shortName}")>]
+        [<RenderWith("Views/Posting/flag.django");ReflectedDefinition>]
+        let flagC (flagType:string) (currentUser: Entities.user) (shortName: string) = 
+                Actions.saveUserAction {Actions.empty() with 
+                                            notifiedBy = currentUser
+                                            notifiedOn = System.DateTime.Now
+                                            flaggedPosting = match Postings.byShortName shortName with |Some p -> p |None->Postings.empty()
+                                            actionType = Action.fromString flagType
+                                        }
+                |> named "currentAction"
             
     module Manage =
     
@@ -128,7 +139,7 @@ namespace NoRecruiters.Controllers
 
             [<Bind("post /posting/apply/{contentType}/{shortName}")>]
             [<RenderWith("Views/Posting/applied.django"); ReflectedDefinition>]
-            let applyC  (contentType: string) (currentUser: Entities.user)  (comment:string form) (data: applyForm) (shortName: string)  = 
+            let applyC  (context:ictx)(contentType: string) (currentUser: Entities.user)  (comment:string form) (data: applyForm) (shortName: string)  = 
 
                 match Postings.byShortName shortName with
                 |Some p ->
@@ -137,9 +148,12 @@ namespace NoRecruiters.Controllers
                                             submittedOn = System.DateTime.Now
                                             submittedBy = currentUser
                                             comment = data.comment
-                                            headingLink = "/" + contentType + "/" + shortName
-                                            moreLink = "/" + contentType + "/" + shortName
-                                            shortPostingText = p.shorttext}
+                                            submittedPosting = (match Postings.byId currentUser.postingId with
+                                                                |Some submitted -> submitted
+                                                                |None -> failwith ("No active posting to apply!")
+                                                                         //context.Transfer("/static.bug")
+                                                                         )
+                                          }
                         Postings.save { p with applications = ( application:: p.applications  ) } |> named "posting"
                 |None -> failwith("No posting by ShortName")
 
@@ -148,3 +162,4 @@ namespace NoRecruiters.Controllers
             [<RenderWith("Views/Posting/Ad/Manage/applicants.django"); ReflectedDefinition>]
             let viewApplicants (currentUser: Entities.user) =
                 Postings.byOwner currentUser true |> named "postings"
+        

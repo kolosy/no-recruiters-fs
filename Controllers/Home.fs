@@ -18,6 +18,8 @@ namespace NoRecruiters.Controllers
     open NoRecruiters.Enums.Content
     open NoRecruiters.Enums.User
     open NoRecruiters.Enums.Common
+
+    open NoRecruiters.Data
     
     module Home =
         [<Bind("/default/{preferenceReset}"); ReflectedDefinition>]
@@ -28,6 +30,10 @@ namespace NoRecruiters.Controllers
         
         [<Bind("/default"); Bind(""); RenderWith("Views/home.django"); ReflectedDefinition>]
         let homeC (ctx: ictx) (preferenceReset: bool option) defaultContentType = 
+            
+            NDjango.BistroIntegration.DjangoEngine.Provider <- NDjango.BistroIntegration.DjangoEngine.Provider
+                                                        .WithFilter "ascontenttype" (new CustomFilters.ContentTypeFilter())
+
             if not (System.String.IsNullOrEmpty(defaultContentType) || (preferenceReset.IsSome && preferenceReset.Value)) then
                 ctx.Transfer(sprintf "/postings/%s" (Content.asString <| Content.fromString defaultContentType))
         

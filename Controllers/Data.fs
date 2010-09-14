@@ -32,15 +32,7 @@ module Data =
             }
 
         
-        type application = {
-            submittedPostingId: string
-            submittedOn: DateTime
-            submittedBy: user
-            comment: string
-            headingLink: string
-            moreLink: string
-            shortPostingText: string
-        }
+        
         type posting = {
             id: string; rev: string;
             tags: tag list
@@ -59,7 +51,22 @@ module Data =
             contentType: Enums.Content.ContentType
             applications: application list
             }
+        and  application = {
+            submittedPostingId: string
+            submittedOn: DateTime
+            submittedBy: user
+            comment: string
+            submittedPosting: posting
+        }
 
+        type userAction = {
+            id: string; rev: string;
+            notifiedBy: user
+            notifiedOn: System.DateTime
+            flaggedPosting: posting
+            comment: string
+            actionType: Enums.Action.UserActionType
+        }
     
     module Users =
         open Entities
@@ -215,7 +222,24 @@ module Data =
             submittedOn = System.DateTime.MinValue
             submittedBy = Users.empty()
             comment = ""
-            headingLink = ""
-            moreLink = ""
-            shortPostingText = ""
+            submittedPosting = Postings.empty()
     }
+    module Actions = 
+        open Entities
+        let empty() = {
+            id=null;rev=null
+            notifiedBy = Users.empty()
+            notifiedOn = System.DateTime.MinValue
+            flaggedPosting = Postings.empty()
+            comment =  ""
+            actionType = Enums.Action.UserActionType.Recruiter
+        }
+        let saveUserAction (action: Entities.userAction) =
+            let id, rev = action |> into database
+            { action with id = id; rev = rev }
+    
+    module CustomFilters =
+        type internal ContentTypeFilter() =
+            interface NDjango.Interfaces.ISimpleFilter with
+                member this.Perform contentType = null
+                        //Content.asString (contentType:?>Content.ContentType)

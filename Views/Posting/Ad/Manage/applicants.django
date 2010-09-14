@@ -13,23 +13,23 @@ NoRecruiters :: All Applicants
     {% for row in posting.applications %}
 	<div class="listItemHeader">
 		<h3>
-			<a href="{{row.headingLink}}">
+			<a href="/{{row.submittedPosting.contentType|ascontenttype}}/{{row.submittedPosting.shortname}}">
 				{{row.submittedPosting.heading}}
 			</a>by
 			{{row.submittedBy.userName}}
 			on
 			{{row.submittedOn}}
 			{% if not adId %}
-			in response to <a href="/{{contentType}}/{{posting.shortname}}">{{posting.heading}}</a>
+			in response to <a href="/ad/{{posting.shortname}}">{{posting.heading}}</a>
 			{% endif %}
 		</h3>
 	</div>
 	<div class="listItem">
-	    {% if row.comment %}
+	    {% if row.Comment %}
 	        {{row.submittedBy.userName}} says "{{row.comment}}"<br /><br />
 	    {% endif %}
-		<span ID="lblContents" class="contentsExcerpt">{{row.shortPostingText}}</span>
-			<a href="{{row.moreLink}}}">
+		<span ID="lblContents" class="contentsExcerpt">{{row.submittedPosting.shorttext}}</span>
+			<a href="/{{row.submittedPosting.contentType|ascontenttype}}/{{row.submittedPosting.shortname}}">
 			more...</a>
 	</div>
     {% empty %}

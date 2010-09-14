@@ -61,8 +61,8 @@ NoRecruiters :: Search
     <div class="listItemHeader">
         <h3>
             <a href="{% url '/{0}/{1}' contentType posting.shortname %}">{{posting.heading}}</a><span
-                class="flags">( <a href="{% url "/posting/flag/{0}/1/{1}" contentType posting.shortname %}">
-                    recruiter!</a>, <a href="{% url "/posting/flag/{0}/3/{1}" contentType posting.shortname %}">
+                class="flags">( <a href="{% url "/posting/flag/recruiter/{0}"  posting.shortname %}">
+                    recruiter!</a>, <a href="{% url "/posting/flag/spam/{0}"  posting.shortname %}">
                         spam</a>)</span>
         </h3>
     </div>
